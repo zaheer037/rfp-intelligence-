@@ -1,0 +1,38 @@
+[
+  {
+    "question": "What is the final submission deadline for Bid1 after all addendums?",
+    "answer": {
+      "answer": "The final submission deadline for Bid1 is July 9, 2024 at 2:00 PM CST.",
+      "sources": [
+        {
+          "chunk_id": "d33a3e52d9451ef9d3c34591",
+          "bid_id": "Bid1",
+          "file": "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf",
+          "page": 1,
+          "section": "",
+          "quote": "ADDENDUM No. 2\nRFP JA-207652 Student and Staff Computing Devices\n\nThe Purpose of this Addendum is to extend the due date of this RFP.\n\nThe new due date for this RFP will be July 9, 2024 at 2:00 PM CST.\n\nThe information in this Addendum is hereby incorporated and made part of any contract awarded\npursuant to this solicitation.\n\nPlease sign this addendum and submit along with your copies of the proposal. ALL OTHER PROVISIONS"
+        }
+      ],
+      "confidence": 1,
+      "notes": "Addendum 2 explicitly extends the due date, overriding any earlier deadline. The portal lists event times in EDT, while the addendum uses CST, indicating a timezone mismatch."
+    }
+  },
+  {
+    "question": "Which affidavit is explicitly required by the Dell laptop PORFP?",
+    "answer": {
+      "answer": "The Dell laptop PORFP explicitly requires the Master Contractor to provide a Mercury Affidavit.",
+      "sources": [
+        {
+          "chunk_id": "3c0ec92548d3d8f4df1890e5",
+          "bid_id": "Bid2",
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "section": "",
+          "quote": "Questions Due (Closing) Date and Time:\n06/01/2024 at 2:00 PM EDT\nQuestions must be submitted in writing to\nthawkins@treasurer.state.md.us with the subject line,\n“QUESTION for Dell Laptop #E20P4600040”, and be\nsubmitted in writing via e-mail to the Procurement Officer no later\nthan the date and time specified.\n\nSecurity Requirements (if 1. The Department reserves the right to purchase more or less\napplicable): than the specified quantity to the extent limited by funding.\n\n2. The Master Contractor must provide the estimated ship\ndate/lead time for each item listed in the PORFP FA I\n\n3. Please allow proposals/quotes provided in response to this\nPORFP to be valid for at least 90 days after the set due date\nabove.\n\n4. The Master Contractor must be an authorized reseller for Dell.\nThe state reserves the right to request a Letter of Authorization\n(LOA) from the Manufacturer or Distributor.\n\n5. Purchase new and unused equipment.\n\n6. The Master Contractor shall not impose a restocking fee if an\nitem is returned due to damage or incorrect product shipped.\n\n7. ENERGY STAR certified product\n\n8. The Master Contractor must provide a Mercury Affidavit:\nhttps://doit.maryland.gov/contracts/Documents/hardware_co\nntract/hwmercury_affidavit.pdf\n\n9. Delivery within 45 days of Award.\n\nInvoicing Instructions: 1. Email invoices to:\nSTOaccountspayable@treasurer.state.md.us\n\n2. Invoice(s) shall be submitted within 10 days of delivering the"
+        }
+      ],
+      "confidence": 0.95,
+      "notes": ""
+    }
+  }
+]

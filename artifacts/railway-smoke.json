@@ -1,0 +1,20 @@
+{
+  "image": "[registry-redacted]/rfp-intelligence:2026-10-26-railway",
+  "fresh_volume": true,
+  "image_defaults_production": true,
+  "only_two_application_credentials": true,
+  "railway_port_8080": true,
+  "root_volume_user_override": true,
+  "automatic_railway_a2a_url": true,
+  "unauthenticated_data_rejected": true,
+  "first_run_index_bid2": {
+    "bid_id": "Bid2",
+    "status": "indexed",
+    "chunks": 34,
+    "warnings": []
+  },
+  "real_filtered_search_hits": 5,
+  "live_groq_answer_cited": true,
+  "duration_seconds": 135.9460404190031,
+  "index_jobs_and_cached_models_survive_restart": true
+}

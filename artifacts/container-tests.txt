@@ -1,0 +1,55 @@
+/usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_a2a_discovery_and_rpc_share_rest_auth (test_backend.BackendTests.test_a2a_discovery_and_rpc_share_rest_auth) ... /usr/local/lib/python3.12/site-packages/rfp/api/a2a.py:32: UserWarning: [EXPERIMENTAL] to_a2a: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  return to_a2a(
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/utils/agent_to_a2a.py:218: UserWarning: [EXPERIMENTAL] A2aAgentExecutor: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  agent_executor = A2aAgentExecutor(runner=runner_or_factory)
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/executor/a2a_agent_executor.py:76: UserWarning: [EXPERIMENTAL] A2aAgentExecutorConfig: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  self._config = config or A2aAgentExecutorConfig()
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/utils/agent_to_a2a.py:251: UserWarning: [EXPERIMENTAL] AgentCardBuilder: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  card_builder = AgentCardBuilder(
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/utils/agent_to_a2a.py:189: UserWarning: [EXPERIMENTAL] InMemoryCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  credential_service = InMemoryCredentialService()
+/usr/local/lib/python3.12/site-packages/google/adk/auth/credential_service/in_memory_credential_service.py:33: UserWarning: [EXPERIMENTAL] BaseCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  super().__init__()
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/executor/a2a_agent_executor.py:188: UserWarning: [EXPERIMENTAL] convert_a2a_request_to_agent_run_request: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  run_request = self._config.request_converter(
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/converters/request_converter.py:127: UserWarning: [EXPERIMENTAL] convert_a2a_part_to_genai_part: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  genai_parts = part_converter(a2a_part)
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/converters/request_converter.py:132: UserWarning: [EXPERIMENTAL] AgentRunRequest: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  return AgentRunRequest(
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/executor/a2a_agent_executor.py:225: UserWarning: [EXPERIMENTAL] TaskResultAggregator: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  task_result_aggregator = TaskResultAggregator()
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/executor/a2a_agent_executor.py:230: UserWarning: [EXPERIMENTAL] convert_event_to_a2a_events: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  for a2a_event in self._config.event_converter(
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/converters/event_converter.py:597: UserWarning: [EXPERIMENTAL] convert_event_to_a2a_message: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  message = convert_event_to_a2a_message(
+/usr/local/lib/python3.12/site-packages/google/adk/a2a/converters/event_converter.py:435: UserWarning: [EXPERIMENTAL] convert_genai_part_to_a2a_part: ADK Implementation for A2A support (A2aAgentExecutor, RemoteA2aAgent and corresponding supporting components etc.) is in experimental mode and is subject to breaking changes. A2A protocol and SDK are themselves not experimental. Once it's stable enough the experimental mode will be removed. Your feedback is welcome.
+  a2a_parts = part_converter(part)
+ok
+test_api_auth_limits_jobs_and_metrics (test_backend.BackendTests.test_api_auth_limits_jobs_and_metrics) ... ok
+test_citation_binding_preserves_identity_gate (test_backend.BackendTests.test_citation_binding_preserves_identity_gate) ... ok
+test_citations_reject_forgery_and_unsupported_values (test_backend.BackendTests.test_citations_reject_forgery_and_unsupported_values) ... ok
+test_failed_publish_keeps_previous_generation (test_backend.BackendTests.test_failed_publish_keeps_previous_generation) ... ok
+test_filters_and_exact_identifiers (test_backend.BackendTests.test_filters_and_exact_identifiers) ... ok
+test_html_tables_and_metadata (test_backend.BackendTests.test_html_tables_and_metadata) ... ok
+test_incompatible_snapshot_can_be_rebuilt_without_blocking_startup (test_backend.BackendTests.test_incompatible_snapshot_can_be_rebuilt_without_blocking_startup) ... ok
+test_incremental_update_delete_and_corrupt_file (test_backend.BackendTests.test_incremental_update_delete_and_corrupt_file) ... ok
+test_job_restart_recovery_and_capacity (test_backend.BackendTests.test_job_restart_recovery_and_capacity) ... ok
+test_json_encoded_citations_keep_strict_evidence_validation (test_backend.BackendTests.test_json_encoded_citations_keep_strict_evidence_validation) ... ok
+test_live_agent_counts_release_after_failure (test_backend.BackendTests.test_live_agent_counts_release_after_failure) ... ok
+test_path_boundaries_and_missing_ocr (test_backend.BackendTests.test_path_boundaries_and_missing_ocr) ... ok
+test_real_adk_runner_and_full_workflow (test_backend.BackendTests.test_real_adk_runner_and_full_workflow) ... ok
+test_schema_retry_receives_actionable_feedback (test_backend.BackendTests.test_schema_retry_receives_actionable_feedback) ... ok
+test_thought_parts_do_not_break_structured_outputs (test_backend.BackendTests.test_thought_parts_do_not_break_structured_outputs) ... ok
+test_validator_feedback_has_a_hard_retry_bound (test_backend.BackendTests.test_validator_feedback_has_a_hard_retry_bound) ... ok
+test_workspace_upload_metadata_and_document_boundaries (test_backend.BackendTests.test_workspace_upload_metadata_and_document_boundaries) ... ok
+test_production_rejects_missing_and_short_api_keys (test_config.ConfigurationTests.test_production_rejects_missing_and_short_api_keys) ... ok
+test_railway_domain_is_automatic_and_custom_url_wins (test_config.ConfigurationTests.test_railway_domain_is_automatic_and_custom_url_wins) ... ok
+test_two_key_env_boots_authenticated_production_api (test_config.ConfigurationTests.test_two_key_env_boots_authenticated_production_api) ... ok
+test_standalone_image_and_scanned_pdf (test_ocr.OcrIntegrationTest.test_standalone_image_and_scanned_pdf) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 4.265s
+
+OK

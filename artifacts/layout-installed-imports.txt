@@ -1,0 +1,2 @@
+Installed package: /usr/local/lib/python3.12/site-packages/rfp/__init__.py
+Factory and domain facade imports passed outside checkout

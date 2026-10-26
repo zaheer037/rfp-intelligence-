@@ -1,0 +1,216 @@
+[
+  {
+    "question": "What is the final submission deadline after all addendums?",
+    "answer": "The final submission deadline, as set by Addendum No.\u202f2, is July\u202f9,\u202f2024 at 2:00\u202fPM\u202fCST.",
+    "sources": [
+      {
+        "chunk_id": "d33a3e52d9451ef9d3c34591",
+        "bid_id": "Bid1",
+        "file": "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf",
+        "page": 1,
+        "section": "",
+        "quote": "The new due date for this RFP will be July 9, 2024 at 2:00 PM CST."
+      }
+    ],
+    "confidence": 0.98,
+    "notes": "Portal event times are shown in EDT (e.g., 06/11/2024 05:00 PM EDT), while the addendum deadline is expressed in CST, indicating a timezone mismatch."
+  },
+  {
+    "question": "Is the Dell bidder required to be an authorized reseller?",
+    "answer": "Yes. The solicitation explicitly requires that the Master Contractor (the Dell bidder) be an authorized reseller for Dell.",
+    "sources": [
+      {
+        "chunk_id": "3c0ec92548d3d8f4df1890e5",
+        "bid_id": "Bid2",
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 2,
+        "section": "",
+        "quote": "4. The Master Contractor must be an authorized reseller for Dell."
+      }
+    ],
+    "confidence": 0.98,
+    "notes": "No addendum alters this requirement; no portal timezone mismatch relevant to this question."
+  },
+  {
+    "question": "What USB version is the minimum requirement for the display?",
+    "answer": "The minimum USB version required for the display is USB\u202f3.1.",
+    "sources": [
+      {
+        "chunk_id": "af61b0a408ced58fa6217e46",
+        "bid_id": "Bid1",
+        "file": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
+        "page": 6,
+        "section": "PROPOSAL SPECIFIC QUESTIONS |",
+        "quote": "Port: USB 3.1 Hub"
+      },
+      {
+        "chunk_id": "6a87746f3c88dee522a36890",
+        "bid_id": "Bid1",
+        "file": "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf",
+        "page": 1,
+        "section": "",
+        "quote": "Answer: USB 3.1 is a minimum requirement."
+      }
+    ],
+    "confidence": 1.0,
+    "notes": ""
+  },
+  {
+    "question": "Within how many days after award must equipment be delivered?",
+    "answer": "Equipment must be delivered within 45 days after award.",
+    "sources": [
+      {
+        "chunk_id": "0bc06925316bac415680ffc9",
+        "bid_id": "Bid2",
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 2,
+        "section": "",
+        "quote": "9. Delivery within 45 days of Award."
+      },
+      {
+        "chunk_id": "3c0ec92548d3d8f4df1890e5",
+        "bid_id": "Bid2",
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 2,
+        "section": "",
+        "quote": "9. Delivery within 45 days of Award."
+      }
+    ],
+    "confidence": 0.99,
+    "notes": ""
+  },
+  {
+    "question": "Who must provide the warranties?",
+    "answer": "Not found in documents",
+    "sources": [],
+    "confidence": 0.0,
+    "notes": "No valid supporting citations were returned"
+  },
+  {
+    "question": "Which affidavit is explicitly required by the PORFP?",
+    "answer": "The PORFP explicitly requires the Master Contractor to submit a Mercury Affidavit.",
+    "sources": [
+      {
+        "chunk_id": "0bc06925316bac415680ffc9",
+        "bid_id": "Bid2",
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 2,
+        "section": "",
+        "quote": "The Master Contractor must provide a Mercury Affidavit: https://doit.maryland.gov/contracts/Documents/hardware_co ntract/hwmercury_affidavit.pdf"
+      },
+      {
+        "chunk_id": "3c0ec92548d3d8f4df1890e5",
+        "bid_id": "Bid2",
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 2,
+        "section": "",
+        "quote": "8. The Master Contractor must provide a Mercury Affidavit:\nhttps://doit.maryland.gov/contracts/Documents/hardware_co\nntract/hwmercury_affidavit.pdf"
+      }
+    ],
+    "confidence": 0.98,
+    "notes": ""
+  },
+  {
+    "question": "Is accidental damage protection requested?",
+    "answer": "No, accidental damage protection is not requested.",
+    "sources": [
+      {
+        "chunk_id": "68d8522b11b420b3d280f855",
+        "bid_id": "Bid1",
+        "file": "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf",
+        "page": 1,
+        "section": "",
+        "quote": "Answer: Dallas ISD will not ask for Accidental Damage Protection for purchased devices."
+      }
+    ],
+    "confidence": 1.0,
+    "notes": ""
+  },
+  {
+    "question": "Which master contract number must eligible bidders hold?",
+    "answer": "Eligible bidders must hold the Desktop, Laptop and Tablet 2015 Master Contract, number 060B5400007.",
+    "sources": [
+      {
+        "chunk_id": "58d74c1150d2b08f997a0f08",
+        "bid_id": "Bid2",
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 1,
+        "section": "SMALL BUSINESS RESERVE (SBR) PROCUREMENT",
+        "quote": "Only Master Contractors that are awarded a contract under the Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007, are eligible to submit a bid in response to this secondary competition Purchase Order Request for Proposal (PORFP)."
+      },
+      {
+        "chunk_id": "fe6f686e1698153069744995",
+        "bid_id": "Bid2",
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "quote": "Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007,"
+      }
+    ],
+    "confidence": 0.99,
+    "notes": ""
+  },
+  {
+    "question": "What is the initial contract term and renewal structure?",
+    "answer": "Not found in documents",
+    "sources": [],
+    "confidence": 0.0,
+    "notes": "No valid supporting citations were returned"
+  },
+  {
+    "question": "Are emailed bids accepted?",
+    "answer": "No. The solicitation states that bids will not be accepted by email; they must be submitted through the eMaryland Marketplace Advantage (eMMA) e\u2011Procurement system.",
+    "sources": [
+      {
+        "chunk_id": "d13990e3fe676c47768555a3",
+        "bid_id": "Bid2",
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 1,
+        "section": "BID SUBMISSION INSTRUCTIONS",
+        "quote": "BID SUBMISSION INSTRUCTIONS\nPurchase Order Request for Proposal (PORFP) responses will only\nbe accepted through the State's eMaryland Marketplace Advantage\n(eMMA) e-Procurement system. Bids will not be accepted by email,\nfax, U.S. Mail, or hand delivery."
+      }
+    ],
+    "confidence": 0.99,
+    "notes": ""
+  },
+  {
+    "question": "What model of laptop is requested?",
+    "answer": "The requested laptop model is the Dell Latitude 5550.",
+    "sources": [
+      {
+        "chunk_id": "83a791e9d7c2b3dabfa9f75d",
+        "bid_id": "Bid2",
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 3,
+        "section": "Section 4 \u2013 Scope of Work",
+        "quote": "Section 4 \u2013 Scope of Work\n\nFA II - Printers and Associated Peripherals\n(Provide product specifications below. If some or all specifications are unknown,\nMaster Contractors may propose products based on a detailed description in the\nBusiness Need / Required Functionality field*)\n*Business Need / Office is in need of a refresh of laptops and must acquire enough\nRequired Functionality laptops to accommodate MD529 employees who have been\nincluded in our staff as of June 1, 2023.\nProduct Name Product Description Model # Qty Due Date\nmm/dd/yyyy\n1. SI# CC7802 Dell SI# CC7802 Dell Latitude SI# CC7802 30 06/10/2024\nLatitude 5550 5550\n*Laptops must be\nMicrosoft Copilot ready*\n2. Dell Thunderbolt 4 Dell Thunderbolt 4 Dock \u2013 WD22TB4 30 06/10/2024\nDock \u2013 WD22TB4 WD22TB4\n\nFA V - Manufacturer\u2019s Extended Warranty\n(Provide a detailed description of warranty requirements and deliverables)\n\nWarranty Requirements Deliverables Start Date End Date\nmm/dd/yyyy mm/dd/yyyy\n1. Dell Limited Hardware Warranty Warranty Date of 3 years\nExtended for all machines certificate or Delivery following the\npurchased - 3 Years Affidavit to be date of delivery\npresented upon\naward\n"
+      },
+      {
+        "chunk_id": "98bebd3ed874f64daefe6d6a",
+        "bid_id": "Bid2",
+        "file": "Dell_Laptop_Specs.pdf",
+        "page": 1,
+        "section": "",
+        "quote": "SI# CC7802 Dell Latitude 5550\nSKUDescription\n210-BLYZDell Latitude 5550 XCTO Base\n\nIntel Core Ultra 5 125U processor (12 MB cache, 12 cores, 14 379-BFNZ\nthreads, up to 4.3 GHz Turbo)\n\nWindows 11 Pro, English, Brazilian Portuguese PT-BR, French, 619-ARSB\nSpanish\n658-BCSBNo Microsoft Office License Included - 30 day Trial Offer Only\n338-CNRGAssembly Base MTL 5550\n338-CNRKIntegrated Intel graphics for Intel Core Ultra 5 125U processor\n321-BKTQLatitude 5550 Bottom Door, MTL U15\n409-BCXYIntel Rapid Storage Technology Driver\n631-BBSQIntel vPro Management Disabled\n"
+      }
+    ],
+    "confidence": 0.98,
+    "notes": ""
+  },
+  {
+    "question": "What display resolution is specified?",
+    "answer": "The specified display resolution is Full HD\u202f1920\u202f\u00d7\u202f1080.",
+    "sources": [
+      {
+        "chunk_id": "83c527f234304e2a7d1f06e6",
+        "bid_id": "Bid2",
+        "file": "Dell_Laptop_Specs.pdf",
+        "page": 1,
+        "section": "16 GB: 2 x 8 GB, DDR5, 5600 MT/s (5200 MT/s with 13th Gen Intel 370-BBTL",
+        "quote": "16 GB: 2 x 8 GB, DDR5, 5600 MT/s (5200 MT/s with 13th Gen Intel 370-BBTL\nCore processors)\n400-BRFT256 GB, M.2 2230, TLC, Gen 4 PCIe NVMe, SSD\n\n15.6\", FHD 1920x1080, 60Hz, IPS, Non-Touch, AG, 250 nit, 45% 391-BJHB\nNTSC, FHD Cam\n583-BLNHEnglish US backlit AI hotkey keyboard with numeric keypad, 99-key\n555-BKQCIntel AX211 WLAN Driver\n\nIntel Wi-Fi 6E (6 where 6E unavailable) AX211, 2x2, 802.11ax, 555-BKLQ\nBluetooth 5.3 wireless card\n\n3-cell, 54 Wh, ExpressCharge Capable, ExpressCharge Boost 451-BDGX\nCapable\n492-BDMN65W AC adapter, USB Type-C, EcoDesign\n346-BKLVNo Security\n537-BBDOE4 Power Cord 1M for US\n340-DMNYLatitude 5550 Quick Start Guide\n340-AGIKSERI Guide (ENG/FR/Multi)\n387-BBPCENERGY STAR Qualified\n817-BBBBCustom Configuration\n658-BFQBDell Additional Software\n340-DMMKMix Model MTL 65WADPT\n389-FGSNIntel Core Ultra 5 Non-vPro Label\n319-BBKKFHD HDR RGB Camera, TNR, Camera Shutter, Microphone\n634-BRWGWindows AutoPilot\n379-BDZBEPEAT 2018 Registered (Gold)"
+      }
+    ],
+    "confidence": 0.97,
+    "notes": ""
+  }
+]

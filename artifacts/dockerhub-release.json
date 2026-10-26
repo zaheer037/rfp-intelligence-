@@ -1,0 +1,15 @@
+{
+  "repository": "[registry-redacted]/rfp-intelligence",
+  "tags": [
+    "2026-10-26-railway",
+    "latest"
+  ],
+  "digest": "sha256:ebfe704bb2923c6377948104e5eb8eb7e5d8a40155f2bf9e9c1e9b54399329d4",
+  "platform": "linux/amd64",
+  "public_pull_verified": true,
+  "dockerhub_url": "https://hub.docker.com/r/[registry-redacted]/rfp-intelligence",
+  "container_tests_passed": 22,
+  "fresh_volume_index_search_live_qa_restart_passed": true,
+  "keys_baked_into_image": false,
+  "anonymous_registry_manifest_verified": true
+}

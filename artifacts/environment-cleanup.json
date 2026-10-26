@@ -1,0 +1,30 @@
+{
+  "before_count": 20,
+  "after_count": 2,
+  "retained_keys": [
+    "RFP_API_KEY",
+    "GROQ_API_KEY"
+  ],
+  "removed_redundant_keys": [
+    "RFP_ENVIRONMENT",
+    "RFP_LLM_MODEL",
+    "RFP_EMBEDDING_MODEL",
+    "RFP_MODEL_THREADS",
+    "RFP_MODEL_CACHE_DIR",
+    "RFP_EMBEDDING_BATCH_SIZE",
+    "RFP_EMBEDDING_MAX_TOKENS",
+    "RFP_RERANKER_MODEL",
+    "RFP_INPUT_ROOT",
+    "RFP_STORAGE_DIR",
+    "HF_HOME",
+    "RFP_OCR_ENABLED",
+    "RFP_MAX_ACTIVE_JOBS",
+    "RFP_MAX_SEARCH_CONCURRENCY",
+    "RFP_LLM_TIMEOUT_SECONDS",
+    "RFP_TASK_TIMEOUT_SECONDS",
+    "RFP_LOG_LEVEL",
+    "RFP_TRACE_CONTENT"
+  ],
+  "effective_local_configuration_unchanged": true,
+  "secrets_preserved": true
+}

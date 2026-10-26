@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-26",
+  "scope": "Standalone backend repository preparation",
+  "source_layout": "src/rfp",
+  "input_root": "bids",
+  "frontend_source_included": false,
+  "tests": {
+    "container": {
+      "run": 22,
+      "passed": 22,
+      "skipped": 0,
+      "memory_limit": "1 GiB",
+      "cpus": 1,
+      "real_ocr": true
+    },
+    "host": {
+      "run": 22,
+      "failed": 0,
+      "skipped": 1,
+      "reason": "Tesseract provided by Docker"
+    }
+  },
+  "docker": {
+    "standalone_build_passed": true,
+    "compose_configuration_valid": true,
+    "test_image": "rfp-backend-standalone-check:latest"
+  },
+  "fresh_index": {
+    "Bid1": {
+      "chunks": 333,
+      "warnings": []
+    },
+    "Bid2": {
+      "chunks": 34,
+      "warnings": []
+    },
+    "storage": "isolated ephemeral container tmpfs"
+  },
+  "retrieval_report": "repository-retrieval-evaluation.json",
+  "demo": {
+    "file": "demo/Bidwell_Demo_with_voiceover.mp4",
+    "duration_seconds": 499.288,
+    "audio_present": true,
+    "full_decode_passed": true,
+    "source_copy_unchanged": true
+  },
+  "deliverables": {
+    "bid_records": 2,
+    "fields_per_record": 20,
+    "evaluation_questions": 18,
+    "evaluation_configurations": 3,
+    "qa_entries": 12,
+    "cited_qa_entries": 10,
+    "full_extraction_trace_events": 54
+  },
+  "security": {
+    "configured_api_and_github_credentials_excluded": true,
+    "env_ignored": true,
+    "model_and_runtime_data_ignored": true,
+    "build_context_allowlist": true
+  },
+  "git": {
+    "requested_repository": "https://github.com/zaheer037/rfp-intelligence-.git",
+    "author": "zaheer037",
+    "commit_grouping": "feature-based",
+    "commit_count": 10,
+    "github_actions_included": false
+  },
+  "limits": [
+    "Human review of extraction values and missing fields remains necessary.",
+    "Two recorded Q&A answers abstained despite available evidence.",
+    "Railway/Vercel deployment not performed.",
+    "Automated GitHub Actions workflows omitted per request; checks were executed locally."
+  ]
+}

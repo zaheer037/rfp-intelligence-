@@ -1,0 +1,164 @@
+{
+  "base": "http://localhost:4174",
+  "results": [
+    {
+      "label": "Protected workspace redirects to login",
+      "passed": true
+    },
+    {
+      "label": "Unauthenticated API denied",
+      "passed": true
+    },
+    {
+      "label": "Cross-origin login denied",
+      "passed": true
+    },
+    {
+      "label": "Invalid password has actionable error",
+      "passed": true
+    },
+    {
+      "label": "Login opens chatbot first",
+      "passed": true
+    },
+    {
+      "label": "Seven agent roles and true idle count displayed",
+      "passed": true
+    },
+    {
+      "label": "HttpOnly SameSite session cookie",
+      "passed": true
+    },
+    {
+      "label": "All twenty extraction fields displayed",
+      "passed": true
+    },
+    {
+      "label": "Structured JSON export",
+      "passed": true
+    },
+    {
+      "label": "Verified addendum changes displayed",
+      "passed": true
+    },
+    {
+      "label": "Actual source document opens",
+      "passed": true
+    },
+    {
+      "label": "Search metadata filters are applied",
+      "passed": true
+    },
+    {
+      "label": "Verbatim source evidence visible",
+      "passed": true
+    },
+    {
+      "label": "Service error state visible",
+      "passed": true
+    },
+    {
+      "label": "Search recovers after service outage",
+      "passed": true
+    },
+    {
+      "label": "Live agent count increases during real research",
+      "passed": true
+    },
+    {
+      "label": "Real Groq Q&A returns final deadline",
+      "passed": true
+    },
+    {
+      "label": "Real answer has citations",
+      "passed": true
+    },
+    {
+      "label": "Real cross-bid comparison has citations",
+      "passed": true
+    },
+    {
+      "label": "Side-by-side comparison shows twenty fields",
+      "passed": true
+    },
+    {
+      "label": "Actual agent trace is inspectable",
+      "passed": true
+    },
+    {
+      "label": "Three measured retrieval configurations displayed",
+      "passed": true
+    },
+    {
+      "label": "Unseen bid uploads and indexes through the browser",
+      "passed": true
+    },
+    {
+      "label": "Dark theme changes rendered colors",
+      "passed": true
+    },
+    {
+      "label": "Workspace no page overflow at 320px",
+      "passed": true
+    },
+    {
+      "label": "Workspace no page overflow at 390px",
+      "passed": true
+    },
+    {
+      "label": "Workspace no page overflow at 768px",
+      "passed": true
+    },
+    {
+      "label": "Workspace no page overflow at 1024px",
+      "passed": true
+    },
+    {
+      "label": "Workspace no page overflow at 1440px",
+      "passed": true
+    },
+    {
+      "label": "Mobile navigation works",
+      "passed": true
+    },
+    {
+      "label": "Expired session redirects to sign-in",
+      "passed": true
+    },
+    {
+      "label": "No browser JavaScript runtime errors",
+      "passed": true
+    },
+    {
+      "label": "No automated WCAG A/AA violations across audited pages",
+      "passed": true
+    }
+  ],
+  "accessibility": [
+    {
+      "name": "library-light",
+      "violations": []
+    },
+    {
+      "name": "search-light",
+      "violations": []
+    },
+    {
+      "name": "insights-light",
+      "violations": []
+    },
+    {
+      "name": "library-dark",
+      "violations": []
+    },
+    {
+      "name": "landing-dark",
+      "violations": []
+    },
+    {
+      "name": "landing-light",
+      "violations": []
+    }
+  ],
+  "runtimeErrors": []
+}

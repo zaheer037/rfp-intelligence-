@@ -1,0 +1,20 @@
+{
+  "programs": [],
+  "stream_groups": [],
+  "streams": [
+    {
+      "codec_type": "video",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "codec_type": "audio"
+    }
+  ],
+  "format": {
+    "duration": "499.288000",
+    "size": "20344636"
+  },
+  "sha256": "0dd3982691ee7ce1fdbb7d17a8a389b52cfa00a02997cd874470fb6d4c996d20",
+  "source": "User-supplied narrated recording; copied without re-encoding"
+}

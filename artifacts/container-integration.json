@@ -1,0 +1,42 @@
+{
+  "scope": "final Docker image; real ONNX and OCR; 1GiB / 1 CPU",
+  "indexing": [
+    {
+      "bid_id": "Bid1",
+      "status": "indexed",
+      "chunks": 333,
+      "warnings": []
+    },
+    {
+      "bid_id": "Bid2",
+      "status": "indexed",
+      "chunks": 34,
+      "warnings": []
+    }
+  ],
+  "recovery_before_index": {
+    "Bid1": "Reindex required: incompatible or unreadable snapshot",
+    "Bid2": "Reindex required: incompatible or unreadable snapshot"
+  },
+  "search": [
+    {
+      "bid_id": "Bid1",
+      "hits": 5
+    },
+    {
+      "bid_id": "Bid2",
+      "hits": 5
+    }
+  ],
+  "status": {
+    "bids": [
+      "Bid1",
+      "Bid2"
+    ],
+    "unavailable_bids": {},
+    "llm_configured": false,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "llm_model": "groq/openai/gpt-oss-120b",
+    "active_jobs": 0
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "compared_against": "running pre-refactor Docker service",
+  "paths": 17,
+  "request_response_schemas": 7,
+  "matching": true,
+  "ignored": "documentation tags/summaries/descriptions only"
+}

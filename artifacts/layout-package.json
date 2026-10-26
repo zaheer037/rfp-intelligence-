@@ -1,0 +1,7 @@
+{
+  "wheel": "rfp_intelligence-0.1.0-py3-none-any.whl",
+  "files": 35,
+  "required_modules_present": true,
+  "runtime_data_or_secrets_in_wheel": false,
+  "entry_points": "[console_scripts]\nrfp = rfp.cli:main"
+}

@@ -1,0 +1,15 @@
+{
+  "answer": "The final submission deadline for Bid1 is July 9, 2024 at 2:00 PM CST.",
+  "sources": [
+    {
+      "chunk_id": "d33a3e52d9451ef9d3c34591",
+      "bid_id": "Bid1",
+      "file": "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf",
+      "page": 1,
+      "section": "",
+      "quote": "The new due date for this RFP will be July 9, 2024 at 2:00 PM CST."
+    }
+  ],
+  "confidence": 1.0,
+  "notes": "Portal shows question deadline in EDT (05:00 PM EDT) which differs from the CST deadline; recorded as a timezone mismatch."
+}

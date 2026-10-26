@@ -1,0 +1,67 @@
+{
+  "environment": {
+    "before_count": 20,
+    "after_count": 2,
+    "retained_keys": [
+      "RFP_API_KEY",
+      "GROQ_API_KEY"
+    ],
+    "removed_redundant_keys": [
+      "RFP_ENVIRONMENT",
+      "RFP_LLM_MODEL",
+      "RFP_EMBEDDING_MODEL",
+      "RFP_MODEL_THREADS",
+      "RFP_MODEL_CACHE_DIR",
+      "RFP_EMBEDDING_BATCH_SIZE",
+      "RFP_EMBEDDING_MAX_TOKENS",
+      "RFP_RERANKER_MODEL",
+      "RFP_INPUT_ROOT",
+      "RFP_STORAGE_DIR",
+      "HF_HOME",
+      "RFP_OCR_ENABLED",
+      "RFP_MAX_ACTIVE_JOBS",
+      "RFP_MAX_SEARCH_CONCURRENCY",
+      "RFP_LLM_TIMEOUT_SECONDS",
+      "RFP_TASK_TIMEOUT_SECONDS",
+      "RFP_LOG_LEVEL",
+      "RFP_TRACE_CONTENT"
+    ],
+    "effective_local_configuration_unchanged": true,
+    "secrets_preserved": true
+  },
+  "release": {
+    "repository": "[registry-redacted]/rfp-intelligence",
+    "tags": [
+      "2026-10-26-railway",
+      "latest"
+    ],
+    "digest": "sha256:ebfe704bb2923c6377948104e5eb8eb7e5d8a40155f2bf9e9c1e9b54399329d4",
+    "platform": "linux/amd64",
+    "public_pull_verified": true,
+    "dockerhub_url": "https://hub.docker.com/r/[registry-redacted]/rfp-intelligence",
+    "container_tests_passed": 22,
+    "fresh_volume_index_search_live_qa_restart_passed": true,
+    "keys_baked_into_image": false,
+    "anonymous_registry_manifest_verified": true
+  },
+  "smoke": {
+    "image": "[registry-redacted]/rfp-intelligence:2026-10-26-railway",
+    "fresh_volume": true,
+    "image_defaults_production": true,
+    "only_two_application_credentials": true,
+    "railway_port_8080": true,
+    "root_volume_user_override": true,
+    "automatic_railway_a2a_url": true,
+    "unauthenticated_data_rejected": true,
+    "first_run_index_bid2": {
+      "bid_id": "Bid2",
+      "status": "indexed",
+      "chunks": 34,
+      "warnings": []
+    },
+    "real_filtered_search_hits": 5,
+    "live_groq_answer_cited": true,
+    "duration_seconds": 135.9460404190031,
+    "index_jobs_and_cached_models_survive_restart": true
+  }
+}
