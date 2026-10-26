@@ -169,3 +169,46 @@ Deploy from [Zaheer's backend repository](https://github.com/zaheer037/rfp-intel
 ## References
 
 [Google ADK](https://google.github.io/adk-docs/) · [FAISS](https://faiss.ai/) · [FastEmbed](https://qdrant.github.io/fastembed/) · [FlashRank](https://github.com/PrithivirajDamodaran/FlashRank) · [Groq structured outputs](https://console.groq.com/docs/structured-outputs)
+
+---
+
+# Architecture implementation details
+
+### Implementation details
+
+The same `Indexing`, `Retrieval` and `Agent` facades serve the CLI, authenticated FastAPI API and Google ADK A2A adapter. This is one process with local models and one persistent store, targeting one replica with 1 GB RAM / one CPU. Groq hosts the language model; embeddings, ranking, parsing and OCR run locally.
+
+#### Agent communication
+
+`src/rfp/agents/agent.py` calls Google ADK `LlmAgent` instances through `Runner`, with a separate in-memory ADK session per call. The model adapter is LiteLLM backed by Groq `openai/gpt-oss-120b`. Pydantic schemas validate model messages. The Python facade owns a bounded workflow; the planner returns a plan within that workflow rather than executing arbitrary commands.
+
+Three specialists cover dates/logistics, commercial/legal details and products/specifications. `asyncio.gather` runs them concurrently. They receive retrieved passages and return distinct field groups; typed run state holds the evidence registry, drafts, validation feedback, retry counts and final output. The reconciler receives base and addendum evidence. A deterministic validator checks citation identity and value format; a model critic reviews evidence support. Targeted repair is bounded. Persistent failures produce null values and explicit errors/partial status.
+
+Ingestion and retrieval are deterministic agent roles implemented as tools, not extra LLM calls. A2A exposes one root workflow through the ADK adapter; agents within this process communicate through typed state and validated outputs, without separate HTTP services. A2A discovery and RPC use the same API-key middleware as the REST API.
+
+#### Storage and operations
+
+`bids/` contains the supplied input folders. Runtime data lives in `storage/` and model caches in `models/`, both ignored by Git. Docker places both beneath `/var/data`. SQLite persists asynchronous jobs. An atomic snapshot pointer publishes consistent vector/metadata generations; a model/parser/chunking fingerprint prevents incompatible loads. Existing file/chunk hashes support incremental indexing.
+
+The API limits concurrent jobs, searches and model calls. One Uvicorn worker owns the local store. JSON logs and Prometheus record request/stage/model latency, failures, token usage, retries, validation and resource metrics. Content traces are disabled by default. Secrets are excluded from the repository and build context. Public sample traces contain only the supplied assignment documents.
+
+#### Design decisions and limits
+
+See README.md for exact chunking, model names, ranking weights, run commands and prompt/validation design. Prompts live in `src/rfp/agents/prompts.py`. Confidence is a heuristic, not a calibrated probability. Evaluation uses 18 development questions across three retrieval configurations; it is not held out. Two of the twelve recorded Q&A answers abstained despite source evidence. The final bid records still contain missing fields that need human review. Semantic answer caching and capability-based go/no-go scoring are not implemented. Token and latency measurement is implemented; monetary cost accounting is not.
+
+A FastAPI backend that ingests HTML, PDFs and images, retrieves cited evidence with FAISS/BM25, and uses Google ADK agents with Groq GPT-OSS 120B to extract bid requirements and answer questions. Local quantized ONNX models keep embedding and reranking small enough for a tested **1 GB RAM / one CPU** deployment.
+
+[Deliverables checklist](DELIVERABLES.md) · [Architecture](#architecture) · [Verification and limitations](artifacts/STATUS.md) · [Railway deployment](RAILWAY.md)
+
+## Assignment outputs
+
+| Deliverable | Files |
+| --- | --- |
+| Twenty-field extraction with values, citations and confidence | [Bid1.json](artifacts/Bid1.json), [Bid2.json](artifacts/Bid2.json) |
+| Retrieval evaluation | [18 labeled questions](eval/questions.json), [measured report](artifacts/retrieval-evaluation.json) |
+| Sample Q&A | [12 actual answers](artifacts/qa-log.json): ten cited answers and two abstentions |
+| Full extraction trace | [sample-trace.jsonl](artifacts/sample-trace.jsonl) |
+| Agent/search architecture | [Architecture](#architecture) · [ARCHITECTURE.md](ARCHITECTURE.md) |
+| Narrated demo | [Video and metadata](demo/README.md) |
+
+The supplied input documents are in `bids/Bid1/` and `bids/Bid2/`. The React UI is maintained in a separate repository; this repository contains its demonstration video but no frontend source.
