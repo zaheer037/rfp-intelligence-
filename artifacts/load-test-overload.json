@@ -1,0 +1,20 @@
+{
+  "url": "http://127.0.0.1:18080",
+  "path": "/search",
+  "mode": "hybrid_rerank",
+  "requests": 100,
+  "concurrency": 4,
+  "duration_seconds": 1.806859242999053,
+  "requests_per_second": 55.344654204507066,
+  "statuses": {
+    "429": 89,
+    "200": 11
+  },
+  "successes_per_second": 6.087911962495777,
+  "successful_latency_seconds": {
+    "p50": 0.1937780890002614,
+    "p95": 0.23456165700190468,
+    "p99": 0.23456165700190468
+  },
+  "scope": "overload/admission test; real Docker API and ONNX models; 1GiB RAM and 1 CPU; 429 expected"
+}

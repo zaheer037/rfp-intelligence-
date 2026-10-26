@@ -1,0 +1,19 @@
+{
+  "url": "http://127.0.0.1:18080",
+  "path": "/search",
+  "mode": "hybrid_rerank",
+  "requests": 100,
+  "concurrency": 1,
+  "duration_seconds": 43.215472864998446,
+  "requests_per_second": 2.3139860186741843,
+  "statuses": {
+    "200": 100
+  },
+  "successes_per_second": 2.3139860186741843,
+  "successful_latency_seconds": {
+    "p50": 0.3668077460024506,
+    "p95": 1.014442046998738,
+    "p99": 1.2601368599971465
+  },
+  "scope": "real Docker API and ONNX models; hard limits 1GiB RAM and 1 CPU"
+}

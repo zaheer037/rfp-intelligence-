@@ -1,0 +1,293 @@
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 22822.0
+python_gc_objects_collected_total{generation="1"} 2434.0
+python_gc_objects_collected_total{generation="2"} 12467.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 10596.0
+python_gc_collections_total{generation="1"} 963.0
+python_gc_collections_total{generation="2"} 18.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="12",patchlevel="15",version="3.12.15"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.757949952e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 5.21060352e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79294169632e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 82.11
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 27.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1024.0
+# HELP rfp_http_requests_total HTTP requests
+# TYPE rfp_http_requests_total counter
+rfp_http_requests_total{method="GET",route="/health/ready",status="200"} 7.0
+rfp_http_requests_total{method="GET",route="/status",status="200"} 2.0
+rfp_http_requests_total{method="POST",route="/index",status="202"} 2.0
+rfp_http_requests_total{method="GET",route="/jobs/{job_id}",status="200"} 429.0
+rfp_http_requests_total{method="GET",route="/search",status="200"} 2.0
+# HELP rfp_http_requests_created HTTP requests
+# TYPE rfp_http_requests_created gauge
+rfp_http_requests_created{method="GET",route="/health/ready",status="200"} 1.7929417023438354e+09
+rfp_http_requests_created{method="GET",route="/status",status="200"} 1.7929417440929823e+09
+rfp_http_requests_created{method="POST",route="/index",status="202"} 1.792941744104784e+09
+rfp_http_requests_created{method="GET",route="/jobs/{job_id}",status="200"} 1.7929417441086278e+09
+rfp_http_requests_created{method="GET",route="/search",status="200"} 1.7929418601419094e+09
+# HELP rfp_http_duration_seconds HTTP latency
+# TYPE rfp_http_duration_seconds histogram
+rfp_http_duration_seconds_bucket{le="0.005",method="GET",route="/health/ready"} 6.0
+rfp_http_duration_seconds_bucket{le="0.01",method="GET",route="/health/ready"} 6.0
+rfp_http_duration_seconds_bucket{le="0.025",method="GET",route="/health/ready"} 6.0
+rfp_http_duration_seconds_bucket{le="0.05",method="GET",route="/health/ready"} 6.0
+rfp_http_duration_seconds_bucket{le="0.075",method="GET",route="/health/ready"} 6.0
+rfp_http_duration_seconds_bucket{le="0.1",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_bucket{le="0.25",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_bucket{le="0.5",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_bucket{le="0.75",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_bucket{le="1.0",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_bucket{le="2.5",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_bucket{le="5.0",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_bucket{le="7.5",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_bucket{le="10.0",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_bucket{le="+Inf",method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_count{method="GET",route="/health/ready"} 7.0
+rfp_http_duration_seconds_sum{method="GET",route="/health/ready"} 0.09107633200619603
+rfp_http_duration_seconds_bucket{le="0.005",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="0.01",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="0.025",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="0.05",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="0.075",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="0.1",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="0.25",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="0.5",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="0.75",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="1.0",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="2.5",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="5.0",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="7.5",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="10.0",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_bucket{le="+Inf",method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_count{method="GET",route="/status"} 2.0
+rfp_http_duration_seconds_sum{method="GET",route="/status"} 0.0010889559998759069
+rfp_http_duration_seconds_bucket{le="0.005",method="POST",route="/index"} 0.0
+rfp_http_duration_seconds_bucket{le="0.01",method="POST",route="/index"} 0.0
+rfp_http_duration_seconds_bucket{le="0.025",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="0.05",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="0.075",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="0.1",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="0.25",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="0.5",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="0.75",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="1.0",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="2.5",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="5.0",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="7.5",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="10.0",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_bucket{le="+Inf",method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_count{method="POST",route="/index"} 2.0
+rfp_http_duration_seconds_sum{method="POST",route="/index"} 0.025986443004512694
+rfp_http_duration_seconds_bucket{le="0.005",method="GET",route="/jobs/{job_id}"} 328.0
+rfp_http_duration_seconds_bucket{le="0.01",method="GET",route="/jobs/{job_id}"} 329.0
+rfp_http_duration_seconds_bucket{le="0.025",method="GET",route="/jobs/{job_id}"} 340.0
+rfp_http_duration_seconds_bucket{le="0.05",method="GET",route="/jobs/{job_id}"} 405.0
+rfp_http_duration_seconds_bucket{le="0.075",method="GET",route="/jobs/{job_id}"} 423.0
+rfp_http_duration_seconds_bucket{le="0.1",method="GET",route="/jobs/{job_id}"} 428.0
+rfp_http_duration_seconds_bucket{le="0.25",method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_bucket{le="0.5",method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_bucket{le="0.75",method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_bucket{le="1.0",method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_bucket{le="2.5",method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_bucket{le="5.0",method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_bucket{le="7.5",method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_bucket{le="10.0",method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_bucket{le="+Inf",method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_count{method="GET",route="/jobs/{job_id}"} 429.0
+rfp_http_duration_seconds_sum{method="GET",route="/jobs/{job_id}"} 4.767687657011265
+rfp_http_duration_seconds_bucket{le="0.005",method="GET",route="/search"} 0.0
+rfp_http_duration_seconds_bucket{le="0.01",method="GET",route="/search"} 0.0
+rfp_http_duration_seconds_bucket{le="0.025",method="GET",route="/search"} 0.0
+rfp_http_duration_seconds_bucket{le="0.05",method="GET",route="/search"} 0.0
+rfp_http_duration_seconds_bucket{le="0.075",method="GET",route="/search"} 0.0
+rfp_http_duration_seconds_bucket{le="0.1",method="GET",route="/search"} 1.0
+rfp_http_duration_seconds_bucket{le="0.25",method="GET",route="/search"} 1.0
+rfp_http_duration_seconds_bucket{le="0.5",method="GET",route="/search"} 1.0
+rfp_http_duration_seconds_bucket{le="0.75",method="GET",route="/search"} 1.0
+rfp_http_duration_seconds_bucket{le="1.0",method="GET",route="/search"} 1.0
+rfp_http_duration_seconds_bucket{le="2.5",method="GET",route="/search"} 2.0
+rfp_http_duration_seconds_bucket{le="5.0",method="GET",route="/search"} 2.0
+rfp_http_duration_seconds_bucket{le="7.5",method="GET",route="/search"} 2.0
+rfp_http_duration_seconds_bucket{le="10.0",method="GET",route="/search"} 2.0
+rfp_http_duration_seconds_bucket{le="+Inf",method="GET",route="/search"} 2.0
+rfp_http_duration_seconds_count{method="GET",route="/search"} 2.0
+rfp_http_duration_seconds_sum{method="GET",route="/search"} 1.367646878999949
+# HELP rfp_http_duration_seconds_created HTTP latency
+# TYPE rfp_http_duration_seconds_created gauge
+rfp_http_duration_seconds_created{method="GET",route="/health/ready"} 1.7929417023438513e+09
+rfp_http_duration_seconds_created{method="GET",route="/status"} 1.792941744093006e+09
+rfp_http_duration_seconds_created{method="POST",route="/index"} 1.7929417441048005e+09
+rfp_http_duration_seconds_created{method="GET",route="/jobs/{job_id}"} 1.7929417441086552e+09
+rfp_http_duration_seconds_created{method="GET",route="/search"} 1.792941860141921e+09
+# HELP rfp_stage_duration_seconds Pipeline stage latency
+# TYPE rfp_stage_duration_seconds histogram
+rfp_stage_duration_seconds_bucket{le="0.005",stage="parsing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.01",stage="parsing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.025",stage="parsing"} 1.0
+rfp_stage_duration_seconds_bucket{le="0.05",stage="parsing"} 1.0
+rfp_stage_duration_seconds_bucket{le="0.075",stage="parsing"} 3.0
+rfp_stage_duration_seconds_bucket{le="0.1",stage="parsing"} 3.0
+rfp_stage_duration_seconds_bucket{le="0.25",stage="parsing"} 4.0
+rfp_stage_duration_seconds_bucket{le="0.5",stage="parsing"} 6.0
+rfp_stage_duration_seconds_bucket{le="0.75",stage="parsing"} 7.0
+rfp_stage_duration_seconds_bucket{le="1.0",stage="parsing"} 8.0
+rfp_stage_duration_seconds_bucket{le="2.5",stage="parsing"} 8.0
+rfp_stage_duration_seconds_bucket{le="5.0",stage="parsing"} 8.0
+rfp_stage_duration_seconds_bucket{le="7.5",stage="parsing"} 8.0
+rfp_stage_duration_seconds_bucket{le="10.0",stage="parsing"} 8.0
+rfp_stage_duration_seconds_bucket{le="+Inf",stage="parsing"} 9.0
+rfp_stage_duration_seconds_count{stage="parsing"} 9.0
+rfp_stage_duration_seconds_sum{stage="parsing"} 58.27230882200456
+rfp_stage_duration_seconds_bucket{le="0.005",stage="embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.01",stage="embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.025",stage="embedding"} 2.0
+rfp_stage_duration_seconds_bucket{le="0.05",stage="embedding"} 2.0
+rfp_stage_duration_seconds_bucket{le="0.075",stage="embedding"} 2.0
+rfp_stage_duration_seconds_bucket{le="0.1",stage="embedding"} 2.0
+rfp_stage_duration_seconds_bucket{le="0.25",stage="embedding"} 2.0
+rfp_stage_duration_seconds_bucket{le="0.5",stage="embedding"} 2.0
+rfp_stage_duration_seconds_bucket{le="0.75",stage="embedding"} 2.0
+rfp_stage_duration_seconds_bucket{le="1.0",stage="embedding"} 2.0
+rfp_stage_duration_seconds_bucket{le="2.5",stage="embedding"} 2.0
+rfp_stage_duration_seconds_bucket{le="5.0",stage="embedding"} 3.0
+rfp_stage_duration_seconds_bucket{le="7.5",stage="embedding"} 3.0
+rfp_stage_duration_seconds_bucket{le="10.0",stage="embedding"} 3.0
+rfp_stage_duration_seconds_bucket{le="+Inf",stage="embedding"} 4.0
+rfp_stage_duration_seconds_count{stage="embedding"} 4.0
+rfp_stage_duration_seconds_sum{stage="embedding"} 56.052520792993164
+rfp_stage_duration_seconds_bucket{le="0.005",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.01",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.025",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.05",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.075",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.1",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.25",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.5",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.75",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="1.0",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="2.5",stage="index_embedding"} 0.0
+rfp_stage_duration_seconds_bucket{le="5.0",stage="index_embedding"} 1.0
+rfp_stage_duration_seconds_bucket{le="7.5",stage="index_embedding"} 1.0
+rfp_stage_duration_seconds_bucket{le="10.0",stage="index_embedding"} 1.0
+rfp_stage_duration_seconds_bucket{le="+Inf",stage="index_embedding"} 2.0
+rfp_stage_duration_seconds_count{stage="index_embedding"} 2.0
+rfp_stage_duration_seconds_sum{stage="index_embedding"} 56.0285322339987
+rfp_stage_duration_seconds_bucket{le="0.005",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.01",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.025",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.05",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.075",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.1",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.25",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.5",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.75",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="1.0",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="2.5",stage="indexing"} 0.0
+rfp_stage_duration_seconds_bucket{le="5.0",stage="indexing"} 1.0
+rfp_stage_duration_seconds_bucket{le="7.5",stage="indexing"} 1.0
+rfp_stage_duration_seconds_bucket{le="10.0",stage="indexing"} 1.0
+rfp_stage_duration_seconds_bucket{le="+Inf",stage="indexing"} 2.0
+rfp_stage_duration_seconds_count{stage="indexing"} 2.0
+rfp_stage_duration_seconds_sum{stage="indexing"} 114.47434037599669
+rfp_stage_duration_seconds_bucket{le="0.005",stage="reranking"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.01",stage="reranking"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.025",stage="reranking"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.05",stage="reranking"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.075",stage="reranking"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.1",stage="reranking"} 1.0
+rfp_stage_duration_seconds_bucket{le="0.25",stage="reranking"} 1.0
+rfp_stage_duration_seconds_bucket{le="0.5",stage="reranking"} 1.0
+rfp_stage_duration_seconds_bucket{le="0.75",stage="reranking"} 1.0
+rfp_stage_duration_seconds_bucket{le="1.0",stage="reranking"} 1.0
+rfp_stage_duration_seconds_bucket{le="2.5",stage="reranking"} 2.0
+rfp_stage_duration_seconds_bucket{le="5.0",stage="reranking"} 2.0
+rfp_stage_duration_seconds_bucket{le="7.5",stage="reranking"} 2.0
+rfp_stage_duration_seconds_bucket{le="10.0",stage="reranking"} 2.0
+rfp_stage_duration_seconds_bucket{le="+Inf",stage="reranking"} 2.0
+rfp_stage_duration_seconds_count{stage="reranking"} 2.0
+rfp_stage_duration_seconds_sum{stage="reranking"} 1.3340718030012795
+rfp_stage_duration_seconds_bucket{le="0.005",stage="retrieval"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.01",stage="retrieval"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.025",stage="retrieval"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.05",stage="retrieval"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.075",stage="retrieval"} 0.0
+rfp_stage_duration_seconds_bucket{le="0.1",stage="retrieval"} 1.0
+rfp_stage_duration_seconds_bucket{le="0.25",stage="retrieval"} 1.0
+rfp_stage_duration_seconds_bucket{le="0.5",stage="retrieval"} 1.0
+rfp_stage_duration_seconds_bucket{le="0.75",stage="retrieval"} 1.0
+rfp_stage_duration_seconds_bucket{le="1.0",stage="retrieval"} 1.0
+rfp_stage_duration_seconds_bucket{le="2.5",stage="retrieval"} 2.0
+rfp_stage_duration_seconds_bucket{le="5.0",stage="retrieval"} 2.0
+rfp_stage_duration_seconds_bucket{le="7.5",stage="retrieval"} 2.0
+rfp_stage_duration_seconds_bucket{le="10.0",stage="retrieval"} 2.0
+rfp_stage_duration_seconds_bucket{le="+Inf",stage="retrieval"} 2.0
+rfp_stage_duration_seconds_count{stage="retrieval"} 2.0
+rfp_stage_duration_seconds_sum{stage="retrieval"} 1.3639363039983436
+# HELP rfp_stage_duration_seconds_created Pipeline stage latency
+# TYPE rfp_stage_duration_seconds_created gauge
+rfp_stage_duration_seconds_created{stage="parsing"} 1.7929417451091857e+09
+rfp_stage_duration_seconds_created{stage="embedding"} 1.7929418535596735e+09
+rfp_stage_duration_seconds_created{stage="index_embedding"} 1.7929418535597272e+09
+rfp_stage_duration_seconds_created{stage="indexing"} 1.7929418536179526e+09
+rfp_stage_duration_seconds_created{stage="reranking"} 1.7929418601410654e+09
+rfp_stage_duration_seconds_created{stage="retrieval"} 1.7929418601412222e+09
+# HELP rfp_errors_total Failures by bounded operation name
+# TYPE rfp_errors_total counter
+# HELP rfp_llm_tokens_total Actual provider token counts
+# TYPE rfp_llm_tokens_total counter
+# HELP rfp_llm_calls_total LLM calls
+# TYPE rfp_llm_calls_total counter
+# HELP rfp_active_jobs Running background jobs
+# TYPE rfp_active_jobs gauge
+rfp_active_jobs 0.0
+# HELP rfp_index_chunks Loaded chunk count
+# TYPE rfp_index_chunks gauge
+rfp_index_chunks 367.0
+# HELP rfp_searches_total Search requests
+# TYPE rfp_searches_total counter
+rfp_searches_total{mode="hybrid_rerank"} 2.0
+# HELP rfp_searches_created Search requests
+# TYPE rfp_searches_created gauge
+rfp_searches_created{mode="hybrid_rerank"} 1.7929418588678553e+09
+# HELP rfp_search_hits Returned results
+# TYPE rfp_search_hits histogram
+rfp_search_hits_bucket{le="0.0"} 0.0
+rfp_search_hits_bucket{le="1.0"} 0.0
+rfp_search_hits_bucket{le="3.0"} 0.0
+rfp_search_hits_bucket{le="5.0"} 2.0
+rfp_search_hits_bucket{le="10.0"} 2.0
+rfp_search_hits_bucket{le="20.0"} 2.0
+rfp_search_hits_bucket{le="50.0"} 2.0
+rfp_search_hits_bucket{le="+Inf"} 2.0
+rfp_search_hits_count 2.0
+rfp_search_hits_sum 10.0
+# HELP rfp_search_hits_created Returned results
+# TYPE rfp_search_hits_created gauge
+rfp_search_hits_created 1.792941697579921e+09
+# HELP rfp_validation_fields_total Field validation outcomes
+# TYPE rfp_validation_fields_total counter
+# HELP rfp_agent_retries_total Retried agent calls
+# TYPE rfp_agent_retries_total counter
