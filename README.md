@@ -135,11 +135,9 @@ rfp serve
 
 ### Assumptions
 
-- **Addenda precedence:** Addenda override original bid details only when supported by field-specific before/after evidence.
 - **Citations:** PDF page numbers are 1-based physical indexes; HTML citations use section locators.
 - **LLM:** Groq GPT-OSS 120B is used for planning, extraction, reconciliation, review, and Q&A. Ingestion, retrieval, and evaluation run locally without an LLM.
 - **Evaluation scope:** Results and ranking configurations were tested only on Bid1 and Bid2.
-- **Document scope:** Only files in the bid folders are indexed; external links are not fetched.
 
 ### Chunking Strategy
 
