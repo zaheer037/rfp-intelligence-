@@ -16,5 +16,6 @@
   "real_filtered_search_hits": 5,
   "live_groq_answer_cited": true,
   "duration_seconds": 135.9460404190031,
-  "index_jobs_and_cached_models_survive_restart": true
+  "index_jobs_and_cached_models_survive_restart": true,
+  "public_report_redaction": "External registry identifiers and local user paths removed; recorded measurements and digests preserved."
 }

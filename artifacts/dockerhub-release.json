@@ -11,5 +11,6 @@
   "container_tests_passed": 22,
   "fresh_volume_index_search_live_qa_restart_passed": true,
   "keys_baked_into_image": false,
-  "anonymous_registry_manifest_verified": true
+  "anonymous_registry_manifest_verified": true,
+  "public_report_redaction": "External registry identifiers and local user paths removed; recorded measurements and digests preserved."
 }

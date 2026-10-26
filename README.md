@@ -1,6 +1,10 @@
 # RFP Intelligence — Agentic RAG for bid documents
 
-**[▶ Watch the narrated demo — 8m 19s](https://drive.google.com/file/d/1gLtL16zGsFf8m7f_c9N-Hp1YCBAFMel1/view)** · [Download the video](demo/Bidwell_Demo_with_voiceover.mp4)
+Created and maintained by [Zaheer](https://github.com/zaheer037).
+
+https://github.com/user-attachments/assets/6ee6aedd-2eb9-45ae-ab5f-1f1527ffc033
+
+[Download the full narrated demo](demo/Bidwell_Demo_with_voiceover.mp4) · [Watch on Google Drive](https://drive.google.com/file/d/1gLtL16zGsFf8m7f_c9N-Hp1YCBAFMel1/view)
 
 A FastAPI backend that ingests HTML, PDFs and images, retrieves cited evidence with FAISS/BM25, and uses Google ADK agents with Groq GPT-OSS 120B to extract bid requirements and answer questions. Local quantized ONNX models keep embedding and reranking small enough for a tested **1 GB RAM / one CPU** deployment.
 
@@ -159,7 +163,7 @@ This is a development set, not a held-out benchmark. Retrieval scores do not imp
 
 **22 container tests passed**, including real scanned-PDF/image OCR, under 1 GB / one CPU. Unit/integration tests explicitly inject model doubles while exercising the actual ADK Runner; live ONNX/Groq evidence is recorded separately. The original warm-search load run completed 100/100 HTTP 200 responses, p95 1.014 s, p99 1.260 s and 2.314 successful requests/s. A concurrency-four overload run recorded 11 successes and 89 explicit 429s, no server errors. Captured memory peak was 492.9 MiB with no OOM events. These are historical local measurements for this corpus; they are not a deployed-service capacity guarantee or a new benchmark after every source change.
 
-The commands above run tests, lint/format checks and retrieval evaluation locally. Docker supplies Tesseract for OCR testing. Automated GitHub Actions workflows are omitted from this submission. See [STATUS.md](artifacts/STATUS.md) for executed checks and remaining limitations.
+The commands above run checks locally. `.github/workflows/backend.yml` also installs Tesseract, runs lint/format and installed-package checks, executes the tests, indexes both supplied bids and evaluates retrieval without a Groq key. It uploads the evaluation report. See [STATUS.md](artifacts/STATUS.md) for executed checks and remaining limitations.
 
 ## Logging and production boundaries
 
@@ -181,7 +185,7 @@ docker compose up --build
 
 Docker includes Tesseract and CPU ONNX Runtime, runs as UID 10001 by default, enables production key validation, listens on `$PORT`, and stores runtime data and models under `/var/data`. First inference downloads weights. A new volume must index Bid1 and Bid2 before search/extraction. Keep the volume writable by the runtime UID.
 
-The published Docker Hub release is [`[registry-redacted]/rfp-intelligence:2026-10-26-railway`](https://hub.docker.com/r/[registry-redacted]/rfp-intelligence). Its tested digest is in `artifacts/dockerhub-release.json`. Follow [RAILWAY.md](RAILWAY.md) for Railway's volume UID setting, credentials, readiness probe and first indexing. Railway deployment has not been performed. `render.yaml` is an alternative Blueprint; its selected `1c-2g` plan has 2 GB, while local validation independently used a 1 GB container limit. The React frontend is deployed separately to Vercel with server-side backend credentials.
+Deploy from [Zaheer's backend repository](https://github.com/zaheer037/rfp-intelligence-) using its root Dockerfile. Follow [RAILWAY.md](RAILWAY.md) for repository access, the persistent volume UID setting, credentials, readiness probe and first indexing. The image is built from the source in this repository; no external registry account is required. Historical local container verification is retained in `artifacts/` with registry identifiers and local user paths redacted. `render.yaml` is an alternative Blueprint; local validation independently used a 1 GB container limit. The React frontend deploys separately to Vercel with server-side backend credentials.
 
 ## References
 

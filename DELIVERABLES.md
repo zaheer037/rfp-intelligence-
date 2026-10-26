@@ -25,7 +25,7 @@ This repository contains the backend and submission evidence. The React frontend
 | Bid comparison | Cited cross-bid Q&A/report supported. No dedicated structured side-by-side report schema |
 | Configurable company capabilities and go/no-go | Not implemented |
 | Semantic caching and cost/latency tracking | Latency and actual token metrics implemented. No semantic answer cache or monetary cost accounting; incremental indexing/model caching is different |
-| Docker and CI tests/evaluation | Dockerfile and Compose included; local tests/evaluation executed. Automated CI omitted per request |
+| Docker and CI tests/evaluation | Dockerfile, Compose and `.github/workflows/backend.yml`; local tests/evaluation executed. Check GitHub Actions for remote run results |
 
 ## Before submission
 

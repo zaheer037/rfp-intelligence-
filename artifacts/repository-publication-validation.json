@@ -63,13 +63,13 @@
     "requested_repository": "https://github.com/zaheer037/rfp-intelligence-.git",
     "author": "zaheer037",
     "commit_grouping": "feature-based",
-    "commit_count": 10,
-    "github_actions_included": false
+    "commit_count": 11,
+    "github_actions_included": true
   },
   "limits": [
     "Human review of extraction values and missing fields remains necessary.",
     "Two recorded Q&A answers abstained despite available evidence.",
     "Railway/Vercel deployment not performed.",
-    "Automated GitHub Actions workflows omitted per request; checks were executed locally."
+    "CI added after initial publication; GitHub Actions reports the remote run outcome."
   ]
 }

@@ -1,6 +1,8 @@
 # Narrated system demo
 
-[Watch the narrated demo on Google Drive](https://drive.google.com/file/d/1gLtL16zGsFf8m7f_c9N-Hp1YCBAFMel1/view) · [Download the MP4](Bidwell_Demo_with_voiceover.mp4)
+https://github.com/user-attachments/assets/6ee6aedd-2eb9-45ae-ab5f-1f1527ffc033
+
+[Download the MP4](Bidwell_Demo_with_voiceover.mp4)
 
 The supplied final video is **8 minutes 19 seconds**, 1920 × 1080, with an audio track. It meets the assignment's 5–10 minute demo duration. The file is copied unchanged from the user-supplied recording; `media-info.json` records its metadata and SHA-256.
 

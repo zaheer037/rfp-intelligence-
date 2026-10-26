@@ -1,55 +1,47 @@
-# Deploy the published backend image on Railway
+# Deploy Zaheer's RFP Intelligence backend on Railway
 
-Use `[registry-redacted]/rfp-intelligence:2026-10-26-railway` (fixed release) or `:latest` in a Railway **Docker Image** service. The image is Linux amd64 and includes the backend, Tesseract and the supplied public Bid1/Bid2 source documents. Application keys, local indexes, jobs, model caches and frontend files are not baked into it.
+Source: [zaheer037/rfp-intelligence-](https://github.com/zaheer037/rfp-intelligence-). This guide builds the Docker image directly from that repository, using its root Dockerfile.
 
-## Service setup
+## Create the service
 
-1. Attach one persistent volume at **`/var/data`**. It holds `storage/` (FAISS, SQLite, uploads and traces) and `models/` (downloaded local ONNX weights).
-2. Add the two application variables:
+1. Connect Railway to GitHub and grant the Railway GitHub app access to **`zaheer037/rfp-intelligence-`**, including the final hyphen.
+2. Select that repository and the `main` branch. Keep the root directory at the repository root; Railway detects `Dockerfile` there.
+3. Review the **Apply changes → Details** banner, then click its global **Deploy** button to apply staged service creation. The service-level deploy button does not apply an uncommitted changeset.
 
-   ```dotenv
-   RFP_API_KEY=<your existing backend key, at least 24 characters>
-   GROQ_API_KEY=<your Groq key>
-   ```
+See Railway's [service sources](https://docs.railway.com/services) and [staged changes](https://docs.railway.com/deployments/staged-changes). Docker Hub is not needed for this source-based deployment.
 
-3. Set **`RAILWAY_RUN_UID=0`** for the root-owned Railway volume. This image otherwise defaults to UID 10001. This is a Railway volume-permissions setting, not another application configuration knob. See Railway's [volume permissions guidance](https://docs.railway.com/volumes/reference).
-4. Set the healthcheck path to **`/health/ready`**. Keep the image's default start command. It listens on `0.0.0.0:$PORT`; Railway supplies `PORT`. Generate a public domain. See [Railway healthchecks](https://docs.railway.com/deployments/healthchecks).
-5. Use **one replica**, with at least the tested **1 GB RAM / one CPU** budget. This is a local FAISS/SQLite service with one writer, not a horizontally shared database.
+## Storage, credentials and port
 
-The image already supplies production mode, absolute storage/input/model paths and CPU limits for inference. The language model, embedding/reranker names, chunking and admission limits have defaults in `src/rfp/core/config.py`. You do not need to copy those defaults into Railway variables. A2A discovery uses Railway's automatically supplied `RAILWAY_PUBLIC_DOMAIN`; `RFP_PUBLIC_BASE_URL` is an optional override for another deployment/domain.
+Attach one persistent volume at **`/var/data`**. The image stores models under `/var/data/models` and indexes/jobs/uploads/traces under `/var/data/storage`.
 
-## First deployment
+Set the two application credentials:
 
-A new volume starts without indexes or model weights. Readiness means the API has started, not that indexing is complete. First indexing/search downloads the small local embedding and reranking weights; the persistent volume caches them for later restarts.
+```dotenv
+RFP_API_KEY=<your strong backend key, at least 24 characters>
+GROQ_API_KEY=<your Groq key>
+```
 
-Index the bundled collections once. Through the frontend, open **Bid library → Add a bid → Use an existing backend folder**, use `Bid1` for both identifier and folder, and repeat for `Bid2`. Alternatively, call `POST /index` with `{"folder":"Bid1"}`, then `Bid2`, using `X-API-Key`; wait for each returned job before starting the next. Extract each record through the UI when desired. Additional collections can be uploaded through the same UI.
+Set **`RAILWAY_RUN_UID=0`** for Railway's root-owned volume; the image otherwise defaults to UID 10001. This platform setting avoids write-permission errors. See [Railway volume permissions](https://docs.railway.com/volumes/reference).
 
-Your local indexes and run history are not published to Docker Hub. If you need that exact state on Railway, transfer it to the volume separately while the service is stopped; do not bake private state into the image.
+The server listens on `0.0.0.0:$PORT`, defaulting to 8000. Railway supplies `PORT`; its public domain target must use the same value. Set the readiness healthcheck to **`/health/ready`** and keep the image's default start command. Use one replica and the tested 1 GB RAM / one CPU budget. Generate a public HTTPS domain; its platform-provided hostname automatically configures A2A discovery.
 
-## Connect the Vercel frontend
+## First indexing
 
-Set its server-side `BACKEND_URL` to the Railway HTTPS URL and `BACKEND_API_KEY` to the same `RFP_API_KEY`. Keep its own `SESSION_SECRET`, demo credentials and public `VITE_SITE_URL` as described in the frontend README. Rebuild/redeploy the frontend after environment changes.
+A fresh volume contains no indexes or model cache. First inference downloads the small ONNX embedding/reranker models. Readiness means the API is running, not that indexing or Groq requests are complete.
 
-## Local run of the same image
+Index Bid1, then Bid2 sequentially. In the frontend, open **Bid library → Add a bid → Use an existing backend folder**, using `Bid1` for identifier/folder and then `Bid2`. Alternatively, submit `POST /index` with `{"folder":"Bid1"}`, then `Bid2`, and the `X-API-Key` header; wait for each job. Extract each record when needed for structured fields/comparison.
 
-From the backend directory, after filling the minimal `.env`:
+## Frontend connection
+
+Deploy [zaheer037/rfp-frontend](https://github.com/zaheer037/rfp-frontend) to Vercel. Its server-side `BACKEND_URL` is the Railway HTTPS origin, and `BACKEND_API_KEY` matches `RFP_API_KEY`. Set its own `SESSION_SECRET` and public `VITE_SITE_URL` as described in its deployment guide. Never put backend credentials in browser-prefixed variables.
+
+## Local Docker verification
 
 ```bash
-docker volume create bidwell-data
-docker run --rm --name bidwell -p 8000:8000 \
-  --env-file .env --memory=1g --cpus=1 \
-  -v bidwell-data:/var/data \
-  [registry-redacted]/rfp-intelligence:2026-10-26-railway
+docker build -t rfp-intelligence .
+docker volume create rfp-data
+docker run --rm -p 8000:8000 --env-file .env \
+  -v rfp-data:/var/data rfp-intelligence
 ```
 
-For a root-owned fresh bind mount, initialize ownership for UID 10001 or use `--user 0:0` as Railway's UID override does. Do not set local relative `RFP_STORAGE_DIR`, `RFP_MODEL_CACHE_DIR` or `RFP_INPUT_ROOT` values in a container: its existing absolute defaults are correct.
-
-## Published image verification
-
-Both release and latest tags were pushed successfully and resolve to:
-
-```text
-sha256:ebfe704bb2923c6377948104e5eb8eb7e5d8a40155f2bf9e9c1e9b54399329d4
-```
-
-The release passed 22 container tests under 1 GB RAM / one CPU, plus a fresh-volume index/search/live-answer test and a restart-persistence check. Registry verification and the exact tags are recorded in `artifacts/dockerhub-release.json`. Railway itself has not been deployed by this task.
+The local release passed 22 container tests including OCR under 1 GB / one CPU, plus fresh-volume indexing/search/live-answer and restart-persistence checks. These are local measurements, not proof of successful hosted deployment. For a crash, open the deployment's logs and inspect its startup traceback before changing the image.
