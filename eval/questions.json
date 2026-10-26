@@ -1,0 +1,200 @@
+[
+  {
+    "bid_id": "Bid1",
+    "question": "What is the final submission deadline after all addendums?",
+    "expected": [
+      {
+        "file": "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf",
+        "page": 1,
+        "passage": "July 9, 2024 at 2:00 PM CST"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "Is the Dell bidder required to be an authorized reseller?",
+    "expected": [
+      {
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 2,
+        "passage": "authorized reseller for Dell"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid1",
+    "question": "What USB version is the minimum requirement for the display?",
+    "expected": [
+      {
+        "file": "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf",
+        "page": 1,
+        "passage": "USB 3.1 is a minimum requirement"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "Within how many days after award must equipment be delivered?",
+    "expected": [
+      {
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 2,
+        "passage": "Delivery within 45 days of Award"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid1",
+    "question": "Who must provide the warranties?",
+    "expected": [
+      {
+        "file": "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf",
+        "page": 1,
+        "passage": "all warranties to be made by OEM"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "Which affidavit is explicitly required by the PORFP?",
+    "expected": [
+      {
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 2,
+        "passage": "must provide a Mercury Affidavit"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid1",
+    "question": "Is accidental damage protection requested?",
+    "expected": [
+      {
+        "file": "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf",
+        "page": 1,
+        "passage": "will not ask for Accidental Damage Protection"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "Which master contract number must eligible bidders hold?",
+    "expected": [
+      {
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 1,
+        "passage": "060B5400007"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid1",
+    "question": "What is the initial contract term and renewal structure?",
+    "expected": [
+      {
+        "file": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
+        "page": 2,
+        "passage": "three (3) year agreement"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "Are emailed bids accepted?",
+    "expected": [
+      {
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 1,
+        "passage": "Bids will not be accepted by email"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid1",
+    "question": "Are vendors required to keep inventory in stock?",
+    "expected": [
+      {
+        "file": "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf",
+        "page": 2,
+        "passage": "not requiring vendors to keep inventory in stock"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid1",
+    "question": "Is a local vendor location required?",
+    "expected": [
+      {
+        "file": "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf",
+        "page": 2,
+        "passage": "a local location is not required"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "How long must vendor proposals remain valid?",
+    "expected": [
+      {
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 2,
+        "passage": "valid for at least 90 days"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "What is the PORFP identifier?",
+    "expected": [
+      {
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 1,
+        "passage": "E20P4600040"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "What is the eMMA project number?",
+    "expected": [
+      {
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 1,
+        "passage": "BPM044557"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "What procurement officer phone number is listed?",
+    "expected": [
+      {
+        "file": "PORFP_-_Dell_Laptop_Final.pdf",
+        "page": 3,
+        "passage": "410-260-7533"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "What model of laptop is requested?",
+    "expected": [
+      {
+        "file": "Dell_Laptop_Specs.pdf",
+        "page": 1,
+        "passage": "Dell Latitude 5550"
+      }
+    ]
+  },
+  {
+    "bid_id": "Bid2",
+    "question": "What display resolution is specified?",
+    "expected": [
+      {
+        "file": "Dell_Laptop_Specs.pdf",
+        "page": 1,
+        "passage": "1920x1080"
+      }
+    ]
+  }
+]

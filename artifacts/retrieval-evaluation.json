@@ -1,0 +1,683 @@
+{
+  "embedding": "BAAI/bge-small-en-v1.5",
+  "reranker": "ms-marco-TinyBERT-L-2-v2",
+  "dense_weight": 2.0,
+  "reranker_weight": 0.25,
+  "results": [
+    {
+      "configuration": "dense",
+      "recall@5": 1.0,
+      "mrr@5": 0.7731481481481481,
+      "questions": 18,
+      "duration_seconds": 1.8162408839998534,
+      "details": [
+        {
+          "question": "What is the final submission deadline after all addendums?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "d33a3e52d9451ef9d3c34591",
+            "41b07a1ed7fe8a10e2c5bcf7",
+            "36529869d2a72e321f37f3fe",
+            "5814d87c314479aec7b6cd86",
+            "f48fa9ce43984bd68df91c4f"
+          ]
+        },
+        {
+          "question": "Is the Dell bidder required to be an authorized reseller?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "retrieved": [
+            "846c6ad2fc53cbb9302c6779",
+            "3c0ec92548d3d8f4df1890e5",
+            "672c6adb32b6976829c2a782",
+            "12d61f256bdbfd1950531e3a",
+            "83a791e9d7c2b3dabfa9f75d"
+          ]
+        },
+        {
+          "question": "What USB version is the minimum requirement for the display?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "retrieved": [
+            "af61b0a408ced58fa6217e46",
+            "6a87746f3c88dee522a36890",
+            "958be2a30f0f9b4e269fd66c",
+            "4fed80bd01fe5f79d9793112",
+            "352e4e60373d8316ed2f9a7f"
+          ]
+        },
+        {
+          "question": "Within how many days after award must equipment be delivered?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0bc06925316bac415680ffc9",
+            "3c0ec92548d3d8f4df1890e5",
+            "83a791e9d7c2b3dabfa9f75d",
+            "ea2f12676e80165e92ce8f36",
+            "cd52a2a38877e118f2e6a2b9"
+          ]
+        },
+        {
+          "question": "Who must provide the warranties?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "68d8522b11b420b3d280f855",
+            "8dec34fb539c7658ba6923ac",
+            "92b2aaf1ed8fbcd35f723c80",
+            "3475f86a2720691791bc2661",
+            "5f5309ee6568cf3e000b3260"
+          ]
+        },
+        {
+          "question": "Which affidavit is explicitly required by the PORFP?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "retrieved": [
+            "01273f8df383ed1b451b589f",
+            "0bc06925316bac415680ffc9",
+            "8cfde3168e01328189ca0459",
+            "455379f646f2264b970c5bf3",
+            "0b17cb4f4bd57e30e796cbcd"
+          ]
+        },
+        {
+          "question": "Is accidental damage protection requested?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "68d8522b11b420b3d280f855",
+            "1ae53ed231d69b73330e9cf4",
+            "d1b8858982e858cd8dfa2826",
+            "18079795a858d93a8095ae94",
+            "e127afd34ca0d413d715441f"
+          ]
+        },
+        {
+          "question": "Which master contract number must eligible bidders hold?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "58d74c1150d2b08f997a0f08",
+            "fe6f686e1698153069744995",
+            "3c0ec92548d3d8f4df1890e5",
+            "d13990e3fe676c47768555a3",
+            "0bc06925316bac415680ffc9"
+          ]
+        },
+        {
+          "question": "What is the initial contract term and renewal structure?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.25,
+          "retrieved": [
+            "86e8306e56b92d136a5b5719",
+            "80b558576c96adc3084d3610",
+            "e329b18e3fb9bcac2ab32bcd",
+            "f0a4cd92900ca54f34d65a7e",
+            "fa77fc7860d64a80fb68bd5b"
+          ]
+        },
+        {
+          "question": "Are emailed bids accepted?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "d13990e3fe676c47768555a3",
+            "672c6adb32b6976829c2a782",
+            "3c0ec92548d3d8f4df1890e5",
+            "ea2f12676e80165e92ce8f36",
+            "dd8bc6e885a95ca7f3f41335"
+          ]
+        },
+        {
+          "question": "Are vendors required to keep inventory in stock?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "bf72351076e51e64c0fa6b12",
+            "ef2f8c88a8dcb4ed7542145e",
+            "3475f86a2720691791bc2661",
+            "00b85702a2bdfd83dcf8b826",
+            "3fb4f91a71f93a227cd4b133"
+          ]
+        },
+        {
+          "question": "Is a local vendor location required?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "3475f86a2720691791bc2661",
+            "bf72351076e51e64c0fa6b12",
+            "ef2f8c88a8dcb4ed7542145e",
+            "7d07b49fba6fad39bf00acda",
+            "4e4151cf2f91272251c90ffd"
+          ]
+        },
+        {
+          "question": "How long must vendor proposals remain valid?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "3c0ec92548d3d8f4df1890e5",
+            "ea2f12676e80165e92ce8f36",
+            "06f1556a531d6c73e4d0b76d",
+            "672c6adb32b6976829c2a782",
+            "846c6ad2fc53cbb9302c6779"
+          ]
+        },
+        {
+          "question": "What is the PORFP identifier?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0b17cb4f4bd57e30e796cbcd",
+            "848cd2efdb6b1bd202922070",
+            "d13990e3fe676c47768555a3",
+            "58d74c1150d2b08f997a0f08",
+            "0bc06925316bac415680ffc9"
+          ]
+        },
+        {
+          "question": "What is the eMMA project number?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0b17cb4f4bd57e30e796cbcd",
+            "d13990e3fe676c47768555a3",
+            "45dc6e71a6006405861ee012",
+            "b621deb41e0b69f0a66da240",
+            "dd8bc6e885a95ca7f3f41335"
+          ]
+        },
+        {
+          "question": "What procurement officer phone number is listed?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "retrieved": [
+            "515af2533779f0b3bbf25c23",
+            "b22f58254a8e1a09851820ac",
+            "d13990e3fe676c47768555a3",
+            "c63565e36da2b8dc180d3600",
+            "dd8bc6e885a95ca7f3f41335"
+          ]
+        },
+        {
+          "question": "What model of laptop is requested?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.3333333333333333,
+          "retrieved": [
+            "83a791e9d7c2b3dabfa9f75d",
+            "83c527f234304e2a7d1f06e6",
+            "98bebd3ed874f64daefe6d6a",
+            "45dc6e71a6006405861ee012",
+            "3c0ec92548d3d8f4df1890e5"
+          ]
+        },
+        {
+          "question": "What display resolution is specified?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.3333333333333333,
+          "retrieved": [
+            "98bebd3ed874f64daefe6d6a",
+            "83a791e9d7c2b3dabfa9f75d",
+            "83c527f234304e2a7d1f06e6",
+            "0b17cb4f4bd57e30e796cbcd",
+            "dd8bc6e885a95ca7f3f41335"
+          ]
+        }
+      ]
+    },
+    {
+      "configuration": "hybrid",
+      "recall@5": 0.9444444444444444,
+      "mrr@5": 0.7796296296296297,
+      "questions": 18,
+      "duration_seconds": 0.972487844999705,
+      "details": [
+        {
+          "question": "What is the final submission deadline after all addendums?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "d33a3e52d9451ef9d3c34591",
+            "713b03c9e5ea813cef8bb2c5",
+            "f48fa9ce43984bd68df91c4f",
+            "d6d62f8aa1d852fe383b33c4",
+            "3d4dd7882c543f62789dfbca"
+          ]
+        },
+        {
+          "question": "Is the Dell bidder required to be an authorized reseller?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "3c0ec92548d3d8f4df1890e5",
+            "83a791e9d7c2b3dabfa9f75d",
+            "846c6ad2fc53cbb9302c6779",
+            "12d61f256bdbfd1950531e3a",
+            "672c6adb32b6976829c2a782"
+          ]
+        },
+        {
+          "question": "What USB version is the minimum requirement for the display?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.3333333333333333,
+          "retrieved": [
+            "af61b0a408ced58fa6217e46",
+            "958be2a30f0f9b4e269fd66c",
+            "6a87746f3c88dee522a36890",
+            "352e4e60373d8316ed2f9a7f",
+            "4fed80bd01fe5f79d9793112"
+          ]
+        },
+        {
+          "question": "Within how many days after award must equipment be delivered?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0bc06925316bac415680ffc9",
+            "3c0ec92548d3d8f4df1890e5",
+            "cd52a2a38877e118f2e6a2b9",
+            "ea2f12676e80165e92ce8f36",
+            "83a791e9d7c2b3dabfa9f75d"
+          ]
+        },
+        {
+          "question": "Who must provide the warranties?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "68d8522b11b420b3d280f855",
+            "92b2aaf1ed8fbcd35f723c80",
+            "3475f86a2720691791bc2661",
+            "8dec34fb539c7658ba6923ac",
+            "5f5309ee6568cf3e000b3260"
+          ]
+        },
+        {
+          "question": "Which affidavit is explicitly required by the PORFP?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "retrieved": [
+            "01273f8df383ed1b451b589f",
+            "0bc06925316bac415680ffc9",
+            "0b17cb4f4bd57e30e796cbcd",
+            "848cd2efdb6b1bd202922070",
+            "8cfde3168e01328189ca0459"
+          ]
+        },
+        {
+          "question": "Is accidental damage protection requested?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "68d8522b11b420b3d280f855",
+            "4fed640944e4df19e7a3025a",
+            "92b2aaf1ed8fbcd35f723c80",
+            "cc31592d1fa94ea8a6ce01a9",
+            "f763953949c6667df1869fd0"
+          ]
+        },
+        {
+          "question": "Which master contract number must eligible bidders hold?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "58d74c1150d2b08f997a0f08",
+            "fe6f686e1698153069744995",
+            "3c0ec92548d3d8f4df1890e5",
+            "0bc06925316bac415680ffc9",
+            "dd8bc6e885a95ca7f3f41335"
+          ]
+        },
+        {
+          "question": "What is the initial contract term and renewal structure?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "retrieved": [
+            "86e8306e56b92d136a5b5719",
+            "f0a4cd92900ca54f34d65a7e",
+            "06667705af7cf7ea4037d6fc",
+            "991b3dde6d5cd92b8c8584f3",
+            "6114a5ae0921a92db205b0da"
+          ]
+        },
+        {
+          "question": "Are emailed bids accepted?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "d13990e3fe676c47768555a3",
+            "672c6adb32b6976829c2a782",
+            "3c0ec92548d3d8f4df1890e5",
+            "ea2f12676e80165e92ce8f36",
+            "dd8bc6e885a95ca7f3f41335"
+          ]
+        },
+        {
+          "question": "Are vendors required to keep inventory in stock?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "bf72351076e51e64c0fa6b12",
+            "3475f86a2720691791bc2661",
+            "ef2f8c88a8dcb4ed7542145e",
+            "01f8b17071836a156d8be724",
+            "3cd411464ec020eadd40239b"
+          ]
+        },
+        {
+          "question": "Is a local vendor location required?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "3475f86a2720691791bc2661",
+            "bf72351076e51e64c0fa6b12",
+            "4e4151cf2f91272251c90ffd",
+            "7d07b49fba6fad39bf00acda",
+            "888d09c6c2ac9d876972a3aa"
+          ]
+        },
+        {
+          "question": "How long must vendor proposals remain valid?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "3c0ec92548d3d8f4df1890e5",
+            "06f1556a531d6c73e4d0b76d",
+            "d13990e3fe676c47768555a3",
+            "672c6adb32b6976829c2a782",
+            "848cd2efdb6b1bd202922070"
+          ]
+        },
+        {
+          "question": "What is the PORFP identifier?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0b17cb4f4bd57e30e796cbcd",
+            "848cd2efdb6b1bd202922070",
+            "d13990e3fe676c47768555a3",
+            "58d74c1150d2b08f997a0f08",
+            "0bc06925316bac415680ffc9"
+          ]
+        },
+        {
+          "question": "What is the eMMA project number?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0b17cb4f4bd57e30e796cbcd",
+            "d13990e3fe676c47768555a3",
+            "45dc6e71a6006405861ee012",
+            "dd8bc6e885a95ca7f3f41335",
+            "0bc06925316bac415680ffc9"
+          ]
+        },
+        {
+          "question": "What procurement officer phone number is listed?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "retrieved": [
+            "515af2533779f0b3bbf25c23",
+            "b22f58254a8e1a09851820ac",
+            "c63565e36da2b8dc180d3600",
+            "848cd2efdb6b1bd202922070",
+            "d13990e3fe676c47768555a3"
+          ]
+        },
+        {
+          "question": "What model of laptop is requested?",
+          "recall": 0.0,
+          "reciprocal_rank": 0,
+          "retrieved": [
+            "83a791e9d7c2b3dabfa9f75d",
+            "83c527f234304e2a7d1f06e6",
+            "3c0ec92548d3d8f4df1890e5",
+            "fe6f686e1698153069744995",
+            "58d74c1150d2b08f997a0f08"
+          ]
+        },
+        {
+          "question": "What display resolution is specified?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.2,
+          "retrieved": [
+            "3c0ec92548d3d8f4df1890e5",
+            "8501644499e8d53159efb5aa",
+            "98bebd3ed874f64daefe6d6a",
+            "83a791e9d7c2b3dabfa9f75d",
+            "83c527f234304e2a7d1f06e6"
+          ]
+        }
+      ]
+    },
+    {
+      "configuration": "hybrid_rerank",
+      "recall@5": 0.9444444444444444,
+      "mrr@5": 0.8074074074074074,
+      "questions": 18,
+      "duration_seconds": 14.27716060000239,
+      "details": [
+        {
+          "question": "What is the final submission deadline after all addendums?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "d33a3e52d9451ef9d3c34591",
+            "713b03c9e5ea813cef8bb2c5",
+            "f48fa9ce43984bd68df91c4f",
+            "d6d62f8aa1d852fe383b33c4",
+            "3d4dd7882c543f62789dfbca"
+          ]
+        },
+        {
+          "question": "Is the Dell bidder required to be an authorized reseller?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "3c0ec92548d3d8f4df1890e5",
+            "846c6ad2fc53cbb9302c6779",
+            "83a791e9d7c2b3dabfa9f75d",
+            "12d61f256bdbfd1950531e3a",
+            "173ce5df02f628041f873ae1"
+          ]
+        },
+        {
+          "question": "What USB version is the minimum requirement for the display?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.3333333333333333,
+          "retrieved": [
+            "af61b0a408ced58fa6217e46",
+            "958be2a30f0f9b4e269fd66c",
+            "6a87746f3c88dee522a36890",
+            "352e4e60373d8316ed2f9a7f",
+            "4fed80bd01fe5f79d9793112"
+          ]
+        },
+        {
+          "question": "Within how many days after award must equipment be delivered?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0bc06925316bac415680ffc9",
+            "3c0ec92548d3d8f4df1890e5",
+            "cd52a2a38877e118f2e6a2b9",
+            "ea2f12676e80165e92ce8f36",
+            "83a791e9d7c2b3dabfa9f75d"
+          ]
+        },
+        {
+          "question": "Who must provide the warranties?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "retrieved": [
+            "92b2aaf1ed8fbcd35f723c80",
+            "68d8522b11b420b3d280f855",
+            "3475f86a2720691791bc2661",
+            "8dec34fb539c7658ba6923ac",
+            "83c186f672554e81c20241da"
+          ]
+        },
+        {
+          "question": "Which affidavit is explicitly required by the PORFP?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0bc06925316bac415680ffc9",
+            "01273f8df383ed1b451b589f",
+            "848cd2efdb6b1bd202922070",
+            "0b17cb4f4bd57e30e796cbcd",
+            "8cfde3168e01328189ca0459"
+          ]
+        },
+        {
+          "question": "Is accidental damage protection requested?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "68d8522b11b420b3d280f855",
+            "4fed640944e4df19e7a3025a",
+            "92b2aaf1ed8fbcd35f723c80",
+            "cc31592d1fa94ea8a6ce01a9",
+            "f763953949c6667df1869fd0"
+          ]
+        },
+        {
+          "question": "Which master contract number must eligible bidders hold?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "58d74c1150d2b08f997a0f08",
+            "fe6f686e1698153069744995",
+            "3c0ec92548d3d8f4df1890e5",
+            "0bc06925316bac415680ffc9",
+            "848cd2efdb6b1bd202922070"
+          ]
+        },
+        {
+          "question": "What is the initial contract term and renewal structure?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "retrieved": [
+            "86e8306e56b92d136a5b5719",
+            "f0a4cd92900ca54f34d65a7e",
+            "06667705af7cf7ea4037d6fc",
+            "6114a5ae0921a92db205b0da",
+            "991b3dde6d5cd92b8c8584f3"
+          ]
+        },
+        {
+          "question": "Are emailed bids accepted?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "d13990e3fe676c47768555a3",
+            "672c6adb32b6976829c2a782",
+            "3c0ec92548d3d8f4df1890e5",
+            "dd8bc6e885a95ca7f3f41335",
+            "ea2f12676e80165e92ce8f36"
+          ]
+        },
+        {
+          "question": "Are vendors required to keep inventory in stock?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "bf72351076e51e64c0fa6b12",
+            "3475f86a2720691791bc2661",
+            "ef2f8c88a8dcb4ed7542145e",
+            "01f8b17071836a156d8be724",
+            "4fed640944e4df19e7a3025a"
+          ]
+        },
+        {
+          "question": "Is a local vendor location required?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "3475f86a2720691791bc2661",
+            "bf72351076e51e64c0fa6b12",
+            "4e4151cf2f91272251c90ffd",
+            "888d09c6c2ac9d876972a3aa",
+            "09927e40028c8d6be3aadfe6"
+          ]
+        },
+        {
+          "question": "How long must vendor proposals remain valid?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "3c0ec92548d3d8f4df1890e5",
+            "d13990e3fe676c47768555a3",
+            "06f1556a531d6c73e4d0b76d",
+            "672c6adb32b6976829c2a782",
+            "848cd2efdb6b1bd202922070"
+          ]
+        },
+        {
+          "question": "What is the PORFP identifier?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0b17cb4f4bd57e30e796cbcd",
+            "848cd2efdb6b1bd202922070",
+            "d13990e3fe676c47768555a3",
+            "58d74c1150d2b08f997a0f08",
+            "0bc06925316bac415680ffc9"
+          ]
+        },
+        {
+          "question": "What is the eMMA project number?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "0b17cb4f4bd57e30e796cbcd",
+            "d13990e3fe676c47768555a3",
+            "45dc6e71a6006405861ee012",
+            "dd8bc6e885a95ca7f3f41335",
+            "0bc06925316bac415680ffc9"
+          ]
+        },
+        {
+          "question": "What procurement officer phone number is listed?",
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "retrieved": [
+            "b22f58254a8e1a09851820ac",
+            "515af2533779f0b3bbf25c23",
+            "58d74c1150d2b08f997a0f08",
+            "d13990e3fe676c47768555a3",
+            "3c0ec92548d3d8f4df1890e5"
+          ]
+        },
+        {
+          "question": "What model of laptop is requested?",
+          "recall": 0.0,
+          "reciprocal_rank": 0,
+          "retrieved": [
+            "83a791e9d7c2b3dabfa9f75d",
+            "83c527f234304e2a7d1f06e6",
+            "3c0ec92548d3d8f4df1890e5",
+            "58d74c1150d2b08f997a0f08",
+            "fe6f686e1698153069744995"
+          ]
+        },
+        {
+          "question": "What display resolution is specified?",
+          "recall": 1.0,
+          "reciprocal_rank": 0.2,
+          "retrieved": [
+            "3c0ec92548d3d8f4df1890e5",
+            "8501644499e8d53159efb5aa",
+            "83a791e9d7c2b3dabfa9f75d",
+            "98bebd3ed874f64daefe6d6a",
+            "83c527f234304e2a7d1f06e6"
+          ]
+        }
+      ]
+    }
+  ]
+}
