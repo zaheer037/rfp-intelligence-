@@ -131,6 +131,34 @@ rfp serve
 | Full ingestion + extraction | `rfp run Bid1` |
 | Docker | `docker compose up --build` |
 
+## Assumptions & Known Limitations
+
+### Assumptions
+
+- **Addenda precedence:** Addenda override original bid details only when supported by field-specific before/after evidence.
+- **Citations:** PDF page numbers are 1-based physical indexes; HTML citations use section locators.
+- **LLM:** Groq GPT-OSS 120B is used for planning, extraction, reconciliation, review, and Q&A. Ingestion, retrieval, and evaluation run locally without an LLM.
+- **Evaluation scope:** Results and ranking configurations were tested only on Bid1 and Bid2.
+- **Document scope:** Only files in the bid folders are indexed; external links are not fetched.
+
+### Chunking Strategy
+
+- Target: 220 words per chunk, with 35-word overlap.
+- Heading- and page-aware splitting preserves context.
+- Long table rows retain column headers.
+- Other chunk sizes have not been benchmarked.
+
+### Known Limitations
+
+- **Confidence:** Scores are heuristic, not calibrated probabilities.
+- **Evaluation:** Only 18 development questions were labeled; results are not held-out. Dense retrieval achieved Recall@5 of 1.000; hybrid retrieval achieved 0.944. MRR@5 improved from 0.780 to 0.807 with reranking.
+- **False negatives:** Two of 12 recorded Q&A answers failed to find available evidence, including Bid1's contract term (3 years plus two 1-year extensions).
+- **Bid1 issues:** The due date has a CST/EDT discrepancy requiring human review. Five fields are missing: Delivery Date, Bid Bond Requirement, Payment Terms, Model_no, and Part_no.
+- **Bid2 issues:** Product quantities (30 laptops and 30 docks) and the Contract Affidavit are omitted from extracted fields. Several fields, including Pre Bid Meeting, Installation, and Bid Bond Requirement, are missing. The 90-day bid term represents proposal validity, not contract duration.
+- **Extraction reliability:** Known issues remain unresolved in generated artifacts; repeated runs may produce different omissions. `completed` means processing finished, not that extraction is complete.
+- **Unimplemented features:** No automated go/no-go decisions, configurable company capabilities, semantic answer caching, monetary cost tracking, or structured comparison schema.
+- **OCR:** Tesseract is required for local scanned-document processing.
+- **Runtime:** Python 3.11–3.13 is supported. FAISS snapshots and SQLite are local, single-process storage and do not support horizontal scaling.
 ## More
 
 [Bid1 JSON](artifacts/Bid1.json) · [Bid2 JSON](artifacts/Bid2.json) · [Cited Q&A](artifacts/qa-log.json) · [Agent trace](artifacts/sample-trace.jsonl) · [Full docs: setup, API, design decisions](docs/DEVELOPMENT.md) · [Railway](RAILWAY.md) · [Checklist](DELIVERABLES.md) · [Frontend repo](https://github.com/zaheer037/rfp-frontend)
