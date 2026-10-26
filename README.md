@@ -2,6 +2,8 @@
 
 **[Open the live demo](https://rfp-frontend-roan.vercel.app/)**
 
+**OPEN LIVE DEMO (Deployed):** [https://rfp-frontend-roan.vercel.app/](https://rfp-frontend-roan.vercel.app/)
+
 Demo login: `admin@gmail.com` / `admin`.
 
 Created and maintained by [Zaheer](https://github.com/zaheer037).
