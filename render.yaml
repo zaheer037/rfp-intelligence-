@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: rfp-intelligence
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: 1c-2g
+    healthCheckPath: /health/ready
+    numInstances: 1
+    disk:
+      name: rfp-data
+      mountPath: /var/data
+      sizeGB: 5
+    envVars:
+      - key: RFP_ENVIRONMENT
+        value: production
+      - key: RFP_API_KEY
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
+      - key: RFP_LLM_MODEL
+        value: groq/openai/gpt-oss-120b
+      - key: RFP_EMBEDDING_MODEL
+        value: BAAI/bge-small-en-v1.5
+      - key: RFP_MODEL_THREADS
+        value: "1"
+      - key: RFP_MODEL_CACHE_DIR
+        value: /var/data/models
+      - key: RFP_TRACE_CONTENT
+        value: "false"

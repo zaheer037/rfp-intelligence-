@@ -1,0 +1,16 @@
+**
+!pyproject.toml
+!requirements.lock
+!src/
+!src/**
+!artifacts/
+!artifacts/retrieval-evaluation.json
+!bids/
+!bids/Bid1/
+!bids/Bid1/**
+!bids/Bid2/
+!bids/Bid2/**
+**/.env*
+**/__pycache__
+**/*.pyc
+**/*.egg-info

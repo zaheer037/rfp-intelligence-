@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      RFP_INPUT_ROOT: /app/bids
+      RFP_STORAGE_DIR: /var/data/storage
+      HF_HOME: /var/data/models
+      RFP_MODEL_CACHE_DIR: /var/data/models
+    volumes:
+      - rfp-data:/var/data
+    mem_limit: 1g
+    cpus: 1.0
+    pids_limit: 256
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+    stop_grace_period: 30m
+volumes:
+  rfp-data:
