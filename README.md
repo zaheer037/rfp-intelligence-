@@ -102,45 +102,9 @@ flowchart LR
 
 One backend process/replica owns the local store. API keys stay server-side. [Detailed setup and design decisions](docs/DEVELOPMENT.md)
 
-### Implemented architecture
+### Implementation details
 
 The same `Indexing`, `Retrieval` and `Agent` facades serve the CLI, authenticated FastAPI API and Google ADK A2A adapter. This is one process with local models and one persistent store, targeting one replica with 1 GB RAM / one CPU. Groq hosts the language model; embeddings, ranking, parsing and OCR run locally.
-
-```mermaid
-flowchart TD
-    Client[CLI or authenticated HTTP client] --> API[FastAPI and bounded durable jobs]
-    Peer[A2A client] --> A2A[ADK A2A adapter]
-    A2A --> Facade[Agent facade and typed run state]
-    API --> Facade
-    Client --> Indexing[Indexing]
-    Client --> Retrieval[Retrieval]
-    API --> Indexing
-    API --> Retrieval
-    Files[HTML, PDF, images in bids or uploads] --> Indexing
-    Indexing --> Parse[Native parsing, tables, bounded Tesseract OCR]
-    Parse --> Chunk[Heading and page chunks; repeated table headers]
-    Chunk --> Embed[Local quantized BGE-small ONNX]
-    Embed --> Store[Atomic FAISS and SQLite snapshots]
-    Store --> Retrieval
-    Retrieval --> Filter[Metadata filter before ranking]
-    Filter --> Rank[Dense and BM25; weighted reciprocal rank fusion]
-    Rank --> Rerank[Local TinyBERT and prior-rank blend]
-    Rerank --> Evidence[Cited passages]
-    Facade --> Planner[ADK planner]
-    Planner --> Specialists[Three concurrent ADK extraction specialists]
-    Specialists --> Evidence
-    Specialists --> Reconcile[ADK addendum reconciliation]
-    Reconcile --> Validate[Deterministic citation checks and ADK critic]
-    Validate -->|Rejected fields; at most two repair rounds| Specialists
-    Validate --> Output[20-field JSON with citations, confidence, errors]
-    Facade --> QA[ADK Q&A and comparison report]
-    Evidence --> QA
-    QA --> Answer[Cited answer or explicit abstention]
-    API --> Jobs[SQLite job history]
-    Facade --> Trace[Opt-in content traces and token usage]
-    Retrieval --> Metrics[Prometheus metrics and JSON logs]
-    Facade --> Metrics
-```
 
 #### Agent communication
 
