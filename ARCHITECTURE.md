@@ -1,4 +1,63 @@
-# Implemented architecture
+# Architecture
+
+## 1. Find the evidence
+
+```mermaid
+flowchart LR
+    Files["PDF / HTML / images"] --> Parse["Parse + OCR"]
+    Parse --> Chunk["Chunk + embed locally"]
+    Chunk --> Index["FAISS + BM25"]
+    Question["Question + filters"] --> Index
+    Index --> Rank["Fuse + rerank"]
+    Rank --> Evidence["Relevant passages + citations"]
+```
+
+| Choice | Implementation |
+| --- | --- |
+| Chunks | 220 words, 35-word overlap; preserve headings and table headers |
+| Embeddings | Local quantized BGE-small ONNX, 384 dimensions |
+| Ranking | Dense + keyword rank fusion, then TinyBERT rank blend |
+| Storage | Per-bid FAISS snapshots + SQLite metadata; incremental updates |
+
+## 2. Extract the requirements
+
+```mermaid
+flowchart TD
+    Plan["ADK planner"] --> Specialists["3 parallel extraction specialists"]
+    Evidence["Retrieved evidence"] --> Specialists
+    Specialists --> Amend["Apply addendum changes"]
+    Amend --> Validate["Check citations + review claims"]
+    Validate -->|"Repair: at most 2 rounds"| Specialists
+    Validate --> Output["20-field JSON + confidence"]
+```
+
+Specialists cover **dates/logistics**, **commercial/legal**, and **products/specifications**. They exchange validated messages through per-run state. Unresolved fields remain explicit nulls or partial results.
+
+Q&A takes the shorter path: **retrieve → ADK answer → evidence review → cited answer or abstention**.
+
+## 3. Serve the application
+
+```mermaid
+flowchart LR
+    Browser["React UI"] --> Gateway["Vercel gateway"]
+    Gateway --> API["FastAPI on Railway"]
+    Peer["A2A client"] --> API
+    CLI["CLI"] --> Services
+    API --> Services["Indexing / Retrieval / Agent"]
+    Services --> Store["Persistent models + indexes + jobs"]
+```
+
+| Module | Responsibility |
+| --- | --- |
+| `ingestion/indexing.py` | Parsing, OCR, chunking and index snapshots |
+| `search/retrieval.py` | Filters, FAISS/BM25, rank fusion and citations |
+| `agents/agent.py` | Google ADK workflows, validation and reporting |
+| `api/` and `cli.py` | Authenticated endpoints, durable jobs and commands |
+| `core/` | Configuration, JSON logs, traces and Prometheus metrics |
+
+One backend process/replica owns the local store. API keys stay server-side. [Detailed setup and design decisions](docs/DEVELOPMENT.md)
+
+# Implemented architecture (detailed)
 
 The same `Indexing`, `Retrieval` and `Agent` facades serve the CLI, authenticated FastAPI API and Google ADK A2A adapter. This is one process with local models and one persistent store, targeting one replica with 1 GB RAM / one CPU. Groq hosts the language model; embeddings, ranking, parsing and OCR run locally.
 
@@ -55,3 +114,4 @@ The API limits concurrent jobs, searches and model calls. One Uvicorn worker own
 ## Design decisions and limits
 
 See README.md for exact chunking, model names, ranking weights, run commands and prompt/validation design. Prompts live in `src/rfp/agents/prompts.py`. Confidence is a heuristic, not a calibrated probability. Evaluation uses 18 development questions across three retrieval configurations; it is not held out. Two of the twelve recorded Q&A answers abstained despite source evidence. The final bid records still contain missing fields that need human review. Semantic answer caching and capability-based go/no-go scoring are not implemented. Token and latency measurement is implemented; monetary cost accounting is not.
+

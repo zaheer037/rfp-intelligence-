@@ -1,6 +1,6 @@
 # Executed verification — October 25, 2026
 
-The backend and separate React frontend were exercised together with the configured Groq key. Keys are not included in artifacts. This is local end-to-end evidence; Render/Vercel deployment and final human acceptance remain outstanding.
+The backend and separate React frontend were exercised together with the configured Groq key. Keys are not included in artifacts. Local checks are recorded below. The later Railway/Vercel hosted snapshot is in [production-qa.json](production-qa.json).
 
 ## Executed checks
 
@@ -10,8 +10,8 @@ The backend and separate React frontend were exercised together with the configu
 - Live Groq GPT-OSS 120B extraction, amended-deadline Q&A and warranty comparison were executed. Integration fixes handle ADK thought parts, Groq JSON mode, JSON-encoded citation objects, actionable bounded schema retries, trusted source-text binding and portal date/time evidence. Semantic validation still checks whether cited passages support each claim.
 - The separate `rfp-web` frontend passes 33 real browser assertions, ten security/formatting/API-boundary tests and six automated accessibility page/theme scans. It covers all 20 fields, citations/documents, amendments, filtered search, live Q&A/comparison, asynchronous history/traces, metrics/evaluation and a genuinely unseen HTML upload. Its synthetic upload was removed after verification.
 - 18 manually checked retrieval labels were evaluated across three configurations with the real BGE-small and TinyBERT models. This is a small development evaluation, not a held-out accuracy benchmark.
-- The original 1 GiB / one CPU search baseline returned 100/100 HTTP 200 responses, 2.314 successful requests/s, p95 1.014 s and p99 1.260 s. A separate concurrency-four overload run returned 11 successes and 89 controlled 429 responses, zero server errors. Highest captured cgroup memory peak was 492.9 MiB, with zero OOM counters. These measurements describe that local workload and corpus, not arbitrary corpus sizes or Render latency. The load benchmark was not rerun after the additional workspace routes/provider fixes.
-- Docker build and Compose validation passed. Render blueprint and Vercel configuration have schema-validation evidence. The backend GitHub Actions workflow is restored per request; remote runs are tracked in the repository Actions tab.
+- The original 1 GiB / one CPU search baseline returned 100/100 HTTP 200 responses, 2.314 successful requests/s, p95 1.014 s and p99 1.260 s. A separate concurrency-four overload run returned 11 successes and 89 controlled 429 responses, zero server errors. Highest captured cgroup memory peak was 492.9 MiB, with zero OOM counters. These measurements describe that local workload and corpus, not arbitrary corpus sizes or hosted latency. The load benchmark was not rerun after the additional workspace routes/provider fixes.
+- Docker build and Compose validation passed. Vercel configuration has schema-validation evidence. The backend GitHub Actions workflow is restored per request; remote runs are tracked in the repository Actions tab.
 
 ## Deliverables and practical limits
 
@@ -26,10 +26,10 @@ The frontend's QA report includes mobile Lighthouse, responsive screenshots and 
 ## Remaining submission/deployment work
 
 1. Human-review the final twenty fields for each bid against the supplied documents, including nulls and the Bid1 portal/addendum timezone discrepancy. Review the two answer abstentions and any partial extraction runs.
-2. Deploy the Docker backend to Render with persistent storage and the separate React repository to Vercel; configure real environment values, then repeat HTTPS/session/source-download/async-job smoke checks on those URLs.
+2. Review the hosted Railway/Vercel QA snapshot and its configuration findings; repeat smoke checks after deployment changes.
 3. Provide repository access and review the included final narrated 8m19s demo in ../demo/README.md.
 
-The supplied Render blueprint currently uses its documented `1c-2g` plan (2 GB); the application was independently tested at the user's requested 1 GB limit. Select the available account-specific plan and ensure the persistent mount is writable by UID 10001. No Render or Vercel deployment was performed.
+The backend was locally validated under 1 GiB / one CPU. See ../RAILWAY.md for persistent storage and runtime configuration.
 
 Chat-first revision: `/status` now exposes seven role descriptions and actual active execution counts, including concurrent extraction specialists. Counts reset on step completion, failure or cancellation; idle is zero. Login opens chat and the other tools remain in the sidebar.
 

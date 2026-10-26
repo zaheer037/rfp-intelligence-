@@ -1,22 +1,198 @@
-# RFP Intelligence — Agentic RAG for bid documents
+# RFP Intelligence — Agentic RAG
 
 **[Open the live demo](https://rfp-frontend-roan.vercel.app/)**
 
 **OPEN LIVE DEMO (Deployed):** [https://rfp-frontend-roan.vercel.app/](https://rfp-frontend-roan.vercel.app/)
 
-Demo login: `admin@gmail.com` / `admin`.
-
-Created and maintained by [Zaheer](https://github.com/zaheer037).
+Demo login: `admin@gmail.com` / `admin` · By [Zaheer](https://github.com/zaheer037).
 
 https://github.com/user-attachments/assets/5bf67e6d-3ad5-4c04-986f-ac087b69bea7
 
-[Watch in the browser player](https://rfp-frontend-roan.vercel.app/demo.html) · [Google Drive fallback](https://drive.google.com/file/d/1gLtL16zGsFf8m7f_c9N-Hp1YCBAFMel1/view)
+[Browser video player](https://rfp-frontend-roan.vercel.app/demo.html) · [Google Drive fallback](https://drive.google.com/file/d/1gLtL16zGsFf8m7f_c9N-Hp1YCBAFMel1/view) · [Download the full narrated demo](demo/Bidwell_Demo_with_voiceover.mp4)
 
-[Download the full narrated demo](demo/Bidwell_Demo_with_voiceover.mp4) · [Watch on Google Drive](https://drive.google.com/file/d/1gLtL16zGsFf8m7f_c9N-Hp1YCBAFMel1/view)
+Search bid documents, extract **20 requirements**, and get answers with **source citations**.
+
+**FastAPI · FAISS + BM25 · Google ADK · Groq GPT-OSS 120B · Local ONNX models**
+
+## Measured results
+
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Hosted browser checks | **34 / 34 passed** | [Production QA](artifacts/production-qa.json) |
+| Docker tests, including OCR | **22 passed** | [Test output](artifacts/container-tests.txt) |
+| Indexed corpus | **2 bids · 9 documents · 367 passages** | [Production QA](artifacts/production-qa.json) |
+| Warm-search requests | **100 / 100 successful** | [Load test](artifacts/load-test-1cpu-1gb.json) |
+| Search latency | **p95 1.014 s · p99 1.260 s** | [Load test](artifacts/load-test-1cpu-1gb.json) |
+| Peak captured memory | **492.9 MiB** under 1 GiB / 1 CPU | [Resources](artifacts/container-resources.json) |
+
+| Retrieval configuration | Recall@5 | MRR@5 |
+| --- | --- | --- |
+| Dense | **1.000** | 0.773 |
+| Dense + BM25 | 0.944 | 0.780 |
+| Dense + BM25 + reranking | 0.944 | **0.807** |
+
+Retrieval uses **18 development questions**. Load/memory figures are local measurements; hosted checks are a separate snapshot. [Evaluation report](artifacts/retrieval-evaluation.json)
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Files["PDF / HTML / images"] --> Search["Indexing + FAISS / BM25"]
+    Client["React UI / API clients"] --> API["FastAPI"]
+    API --> Search
+    API --> Agents["Google ADK + Groq"]
+    Agents <--> Search
+    Agents --> Result["Cited answers + 20-field JSON"]
+```
+
+### 1. Find the evidence
+
+```mermaid
+flowchart LR
+    Files["PDF / HTML / images"] --> Parse["Parse + OCR"]
+    Parse --> Chunk["Chunk + embed locally"]
+    Chunk --> Index["FAISS + BM25"]
+    Question["Question + filters"] --> Index
+    Index --> Rank["Fuse + rerank"]
+    Rank --> Evidence["Relevant passages + citations"]
+```
+
+| Choice | Implementation |
+| --- | --- |
+| Chunks | 220 words, 35-word overlap; preserve headings and table headers |
+| Embeddings | Local quantized BGE-small ONNX, 384 dimensions |
+| Ranking | Dense + keyword rank fusion, then TinyBERT rank blend |
+| Storage | Per-bid FAISS snapshots + SQLite metadata; incremental updates |
+
+### 2. Extract the requirements
+
+```mermaid
+flowchart TD
+    Plan["ADK planner"] --> Specialists["3 parallel extraction specialists"]
+    Evidence["Retrieved evidence"] --> Specialists
+    Specialists --> Amend["Apply addendum changes"]
+    Amend --> Validate["Check citations + review claims"]
+    Validate -->|"Repair: at most 2 rounds"| Specialists
+    Validate --> Output["20-field JSON + confidence"]
+```
+
+Specialists cover **dates/logistics**, **commercial/legal**, and **products/specifications**. They exchange validated messages through per-run state. Unresolved fields remain explicit nulls or partial results.
+
+Q&A takes the shorter path: **retrieve → ADK answer → evidence review → cited answer or abstention**.
+
+### 3. Serve the application
+
+```mermaid
+flowchart LR
+    Browser["React UI"] --> Gateway["Vercel gateway"]
+    Gateway --> API["FastAPI on Railway"]
+    Peer["A2A client"] --> API
+    CLI["CLI"] --> Services
+    API --> Services["Indexing / Retrieval / Agent"]
+    Services --> Store["Persistent models + indexes + jobs"]
+```
+
+| Module | Responsibility |
+| --- | --- |
+| `ingestion/indexing.py` | Parsing, OCR, chunking and index snapshots |
+| `search/retrieval.py` | Filters, FAISS/BM25, rank fusion and citations |
+| `agents/agent.py` | Google ADK workflows, validation and reporting |
+| `api/` and `cli.py` | Authenticated endpoints, durable jobs and commands |
+| `core/` | Configuration, JSON logs, traces and Prometheus metrics |
+
+One backend process/replica owns the local store. API keys stay server-side. [Detailed setup and design decisions](docs/DEVELOPMENT.md)
+
+### Implemented architecture
+
+The same `Indexing`, `Retrieval` and `Agent` facades serve the CLI, authenticated FastAPI API and Google ADK A2A adapter. This is one process with local models and one persistent store, targeting one replica with 1 GB RAM / one CPU. Groq hosts the language model; embeddings, ranking, parsing and OCR run locally.
+
+```mermaid
+flowchart TD
+    Client[CLI or authenticated HTTP client] --> API[FastAPI and bounded durable jobs]
+    Peer[A2A client] --> A2A[ADK A2A adapter]
+    A2A --> Facade[Agent facade and typed run state]
+    API --> Facade
+    Client --> Indexing[Indexing]
+    Client --> Retrieval[Retrieval]
+    API --> Indexing
+    API --> Retrieval
+    Files[HTML, PDF, images in bids or uploads] --> Indexing
+    Indexing --> Parse[Native parsing, tables, bounded Tesseract OCR]
+    Parse --> Chunk[Heading and page chunks; repeated table headers]
+    Chunk --> Embed[Local quantized BGE-small ONNX]
+    Embed --> Store[Atomic FAISS and SQLite snapshots]
+    Store --> Retrieval
+    Retrieval --> Filter[Metadata filter before ranking]
+    Filter --> Rank[Dense and BM25; weighted reciprocal rank fusion]
+    Rank --> Rerank[Local TinyBERT and prior-rank blend]
+    Rerank --> Evidence[Cited passages]
+    Facade --> Planner[ADK planner]
+    Planner --> Specialists[Three concurrent ADK extraction specialists]
+    Specialists --> Evidence
+    Specialists --> Reconcile[ADK addendum reconciliation]
+    Reconcile --> Validate[Deterministic citation checks and ADK critic]
+    Validate -->|Rejected fields; at most two repair rounds| Specialists
+    Validate --> Output[20-field JSON with citations, confidence, errors]
+    Facade --> QA[ADK Q&A and comparison report]
+    Evidence --> QA
+    QA --> Answer[Cited answer or explicit abstention]
+    API --> Jobs[SQLite job history]
+    Facade --> Trace[Opt-in content traces and token usage]
+    Retrieval --> Metrics[Prometheus metrics and JSON logs]
+    Facade --> Metrics
+```
+
+#### Agent communication
+
+`src/rfp/agents/agent.py` calls Google ADK `LlmAgent` instances through `Runner`, with a separate in-memory ADK session per call. The model adapter is LiteLLM backed by Groq `openai/gpt-oss-120b`. Pydantic schemas validate model messages. The Python facade owns a bounded workflow; the planner returns a plan within that workflow rather than executing arbitrary commands.
+
+Three specialists cover dates/logistics, commercial/legal details and products/specifications. `asyncio.gather` runs them concurrently. They receive retrieved passages and return distinct field groups; typed run state holds the evidence registry, drafts, validation feedback, retry counts and final output. The reconciler receives base and addendum evidence. A deterministic validator checks citation identity and value format; a model critic reviews evidence support. Targeted repair is bounded. Persistent failures produce null values and explicit errors/partial status.
+
+Ingestion and retrieval are deterministic agent roles implemented as tools, not extra LLM calls. A2A exposes one root workflow through the ADK adapter; agents within this process communicate through typed state and validated outputs, without separate HTTP services. A2A discovery and RPC use the same API-key middleware as the REST API.
+
+#### Storage and operations
+
+`bids/` contains the supplied input folders. Runtime data lives in `storage/` and model caches in `models/`, both ignored by Git. Docker places both beneath `/var/data`. SQLite persists asynchronous jobs. An atomic snapshot pointer publishes consistent vector/metadata generations; a model/parser/chunking fingerprint prevents incompatible loads. Existing file/chunk hashes support incremental indexing.
+
+The API limits concurrent jobs, searches and model calls. One Uvicorn worker owns the local store. JSON logs and Prometheus record request/stage/model latency, failures, token usage, retries, validation and resource metrics. Content traces are disabled by default. Secrets are excluded from the repository and build context. Public sample traces contain only the supplied assignment documents.
+
+#### Design decisions and limits
+
+See README.md for exact chunking, model names, ranking weights, run commands and prompt/validation design. Prompts live in `src/rfp/agents/prompts.py`. Confidence is a heuristic, not a calibrated probability. Evaluation uses 18 development questions across three retrieval configurations; it is not held out. Two of the twelve recorded Q&A answers abstained despite source evidence. The final bid records still contain missing fields that need human review. Semantic answer caching and capability-based go/no-go scoring are not implemented. Token and latency measurement is implemented; monetary cost accounting is not.
+
+## Quick start
+
+Python **3.12**; install Tesseract for local OCR or use Docker.
+
+```bash
+git clone https://github.com/zaheer037/rfp-intelligence-.git
+cd rfp-intelligence-
+python3.12 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.lock
+pip install -e '.[dev]'
+cp .env.example .env
+```
+
+Set `GROQ_API_KEY` and `RFP_API_KEY` (at least 24 characters), then:
+
+```bash
+rfp serve
+```
+
+| Mode | Command |
+| --- | --- |
+| Index supplied bids | `rfp index Bid1` then `rfp index Bid2` |
+| Search evidence | `rfp search 'submission deadline' --bid-id Bid1` |
+| Extract requirements | `rfp extract Bid1` |
+| Ask a question | `rfp ask 'Compare warranty requirements.'` |
+| Full ingestion + extraction | `rfp run Bid1` |
+| Docker | `docker compose up --build` |
+
 
 A FastAPI backend that ingests HTML, PDFs and images, retrieves cited evidence with FAISS/BM25, and uses Google ADK agents with Groq GPT-OSS 120B to extract bid requirements and answer questions. Local quantized ONNX models keep embedding and reranking small enough for a tested **1 GB RAM / one CPU** deployment.
 
-[Deliverables checklist](DELIVERABLES.md) · [Architecture diagram](ARCHITECTURE.md) · [Verification and limitations](artifacts/STATUS.md) · [Railway deployment](RAILWAY.md)
+[Deliverables checklist](DELIVERABLES.md) · [Architecture](#architecture) · [Verification and limitations](artifacts/STATUS.md) · [Railway deployment](RAILWAY.md)
 
 ## Assignment outputs
 
@@ -26,12 +202,12 @@ A FastAPI backend that ingests HTML, PDFs and images, retrieves cited evidence w
 | Retrieval evaluation | [18 labeled questions](eval/questions.json), [measured report](artifacts/retrieval-evaluation.json) |
 | Sample Q&A | [12 actual answers](artifacts/qa-log.json): ten cited answers and two abstentions |
 | Full extraction trace | [sample-trace.jsonl](artifacts/sample-trace.jsonl) |
-| Agent/search architecture | [ARCHITECTURE.md](ARCHITECTURE.md) |
+| Agent/search architecture | [Architecture](#architecture) · [ARCHITECTURE.md](ARCHITECTURE.md) |
 | Narrated demo | [Video and metadata](demo/README.md) |
 
 The supplied input documents are in `bids/Bid1/` and `bids/Bid2/`. The React UI is maintained in a separate repository; this repository contains its demonstration video but no frontend source.
 
-## Setup
+## Setup (full details)
 
 Use Python 3.12 and install Tesseract for OCR, or use Docker, which includes it.
 
@@ -138,7 +314,7 @@ The API delegates to the same `Indexing`, `Retrieval` and `Agent` classes as the
 
 **Retrieval.** Query expansion preserves the original terms and product identifiers. Metadata constraints filter the eligible corpus before ranking. Weighted reciprocal rank fusion (constant 60; dense:keyword 2:1) combines FAISS and BM25. A local FlashRank TinyBERT cross-encoder (approximately 4 MB weights) reranks candidates; final rank blends prior rank 75% and cross-encoder rank 25% through RRF. These configurable weights were developed on this small dataset, not established as universally optimal. Filtered subset construction is O(n).
 
-**Agent framework and communication.** Google ADK `LlmAgent`/`Runner`, with LiteLLM's Groq adapter, runs GPT-OSS 120B. A planner, three concurrent extraction specialists, addendum reconciler, semantic critic and Q&A/report role exchange Pydantic-validated messages through per-run typed state. Ingestion/retrieval are deterministic tools. An ADK A2A root exposes the same facade; no separate remote service per agent is required. The Python orchestrator controls the workflow and bounds retries; the planner does not execute arbitrary commands. See the [communication diagram](ARCHITECTURE.md).
+**Agent framework and communication.** Google ADK `LlmAgent`/`Runner`, with LiteLLM's Groq adapter, runs GPT-OSS 120B. A planner, three concurrent extraction specialists, addendum reconciler, semantic critic and Q&A/report role exchange Pydantic-validated messages through per-run typed state. Ingestion/retrieval are deterministic tools. An ADK A2A root exposes the same facade; no separate remote service per agent is required. The Python orchestrator controls the workflow and bounds retries; the planner does not execute arbitrary commands. See the [communication diagram](#agent-communication).
 
 **Prompts and evidence.** `agents/prompts.py` defines role instructions, field groups and cited-or-abstain guardrails. Retrieved documents are evidence rather than instructions; specialists receive relevant passages, not whole documents. Extraction uses structured responses separately from function calling. The evidence registry binds returned citations to actual retrieved chunks. Deterministic checks and an LLM critic validate support and formats; targeted repair runs at most twice. Addendum changes require field-specific before/after evidence. Ambiguous timezones remain flagged instead of silently converted. Confidence is a heuristic, not a calibrated probability. Blank affidavits do not prove identities or signatures.
 
@@ -193,8 +369,16 @@ docker compose up --build
 
 Docker includes Tesseract and CPU ONNX Runtime, runs as UID 10001 by default, enables production key validation, listens on `$PORT`, and stores runtime data and models under `/var/data`. First inference downloads weights. A new volume must index Bid1 and Bid2 before search/extraction. Keep the volume writable by the runtime UID.
 
-Deploy from [Zaheer's backend repository](https://github.com/zaheer037/rfp-intelligence-) using its root Dockerfile. Follow [RAILWAY.md](RAILWAY.md) for repository access, the persistent volume UID setting, credentials, readiness probe and first indexing. The image is built from the source in this repository; no external registry account is required. Historical local container verification is retained in `artifacts/` with registry identifiers and local user paths redacted. `render.yaml` is an alternative Blueprint; local validation independently used a 1 GB container limit. The React frontend deploys separately to Vercel with server-side backend credentials.
+Deploy from [Zaheer's backend repository](https://github.com/zaheer037/rfp-intelligence-) using its root Dockerfile. Follow [RAILWAY.md](RAILWAY.md) for repository access, the persistent volume UID setting, credentials, readiness probe and first indexing. The image is built from the source in this repository; no external registry account is required. Historical local container verification is retained in `artifacts/` with registry identifiers and local user paths redacted. Local validation used a 1 GB container limit. The React frontend deploys separately to Vercel with server-side backend credentials.
 
 ## References
 
 [Google ADK](https://google.github.io/adk-docs/) · [FAISS](https://faiss.ai/) · [FastEmbed](https://qdrant.github.io/fastembed/) · [FlashRank](https://github.com/PrithivirajDamodaran/FlashRank) · [Groq structured outputs](https://console.groq.com/docs/structured-outputs)
+
+## Deliverables and guides
+
+[Bid1 JSON](artifacts/Bid1.json) · [Bid2 JSON](artifacts/Bid2.json) · [Cited Q&A](artifacts/qa-log.json) · [Agent trace](artifacts/sample-trace.jsonl)
+
+[Setup, API and design decisions](docs/DEVELOPMENT.md) · [Railway deployment](RAILWAY.md) · [Requirements checklist](DELIVERABLES.md) · [Frontend repository](https://github.com/zaheer037/rfp-frontend)
+
+**Review limits:** extraction can return missing or rejected fields. The hosted QA snapshot includes a partial Bid2 result and an A2A public-URL configuration finding. [Details](artifacts/production-qa.json)

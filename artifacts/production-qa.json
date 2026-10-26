@@ -1,0 +1,72 @@
+{
+  "frontend": "https://rfp-frontend-roan.vercel.app",
+  "backend": "https://remarkable-gratitude-production-d0f2.up.railway.app",
+  "result": "Core hosted user journey works; remaining configuration and extraction-quality findings listed.",
+  "frontend_ui_security": {
+    "passed": 19,
+    "total": 19
+  },
+  "frontend_real_data_workflows": {
+    "passed": 15,
+    "total": 15,
+    "runtime_errors": []
+  },
+  "direct_backend_checks": {
+    "passed": 38,
+    "total": 40,
+    "failures": [
+      {
+        "name": "extract job completes",
+        "passed": false,
+        "job_id": "6632c3db7a054596a40107f37025d0d6",
+        "job_status": "partial",
+        "seconds": 29.96
+      },
+      {
+        "name": "A2A discovery advertises deployed URL",
+        "passed": false,
+        "url": "http://localhost:8000/a2a/"
+      }
+    ]
+  },
+  "indexed_bids": {
+    "Bid1": 333,
+    "Bid2": 34
+  },
+  "extractions": {
+    "Bid1": {
+      "status": "completed",
+      "validation": {
+        "passed": 16,
+        "failed": 0,
+        "not_found": 4,
+        "rejected": {}
+      },
+      "total_fields": 20
+    },
+    "Bid2": {
+      "status": "partial",
+      "validation": {
+        "passed": 15,
+        "failed": 2,
+        "not_found": 3,
+        "rejected": {
+          "Product Specification": "The provided specification string is a synthesized summary and does not appear verbatim in any quoted source; the cited chunk (98bebd3ed874f64daefe6d6a) contains different wording and lacks several elements of the value.",
+          "Bid Summary": "The summary text is a composite of multiple document excerpts and is not presented as a single exact quote in any source; thus the populated value is not directly entailed by the evidence."
+        }
+      },
+      "total_fields": 20
+    }
+  },
+  "configuration_findings": {
+    "Railway_RFP_PUBLIC_BASE_URL": "https://remarkable-gratitude-production-d0f2.up.railway.app",
+    "Vercel_VITE_SITE_URL": "https://rfp-frontend-roan.vercel.app"
+  },
+  "limits": [
+    "No hosted restart-persistence test.",
+    "No synthetic upload collection created.",
+    "No production load/capacity test.",
+    "Extraction outputs need human review; confidence is heuristic."
+  ],
+  "snapshot_date": "2026-10-26"
+}

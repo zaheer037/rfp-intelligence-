@@ -33,4 +33,4 @@ The new application was exercised on port 8002 with a temporary frontend on 4174
 - `layout-live-extraction.json`: actual Groq output from the rebuilt service.
 - `layout-live-cutover.json`: final readiness, data-preservation and frontend checks.
 
-This was an internal refactor. HTTP endpoints, environment variable names, index formats and the SQLite schema were preserved. No retrieval/LLM behavior or model choices were intentionally changed. Historical benchmarks and demo recordings remain historical; new Render/Vercel deployment was not performed. Passing these checks does not replace final human review of model-generated bid facts.
+This was an internal refactor. HTTP endpoints, environment variable names, index formats and the SQLite schema were preserved. No retrieval/LLM behavior or model choices were intentionally changed. Historical benchmarks and demo recordings remain historical; no new hosted deployment was performed during that refactor. Passing these checks does not replace final human review of model-generated bid facts.
